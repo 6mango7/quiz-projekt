@@ -1,0 +1,79 @@
+# ============================================
+#  Sekrety i zmienne środowiskowe
+# ============================================
+.env
+.env.*
+!.env.example
+
+# ============================================
+#  Python / FastAPI (backend)
+# ============================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Środowiska wirtualne
+venv/
+.venv/
+env/
+
+# Testy i narzędzia
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Zdjęcia wgrane przez użytkowników (folder zostaje dzięki .gitkeep)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ============================================
+#  Node / React / Vite (frontend)
+# ============================================
+node_modules/
+frontend/dist/
+frontend/build/
+.vite/
+*.local
+
+# Logi
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ============================================
+#  PostgreSQL / Docker
+# ============================================
+# Dane bazy, jeśli docker-compose montuje je do lokalnego folderu
+postgres-data/
+pgdata/
+*.sql.gz
+*.dump
+
+# ============================================
+#  Edytory i IDE
+# ============================================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# ============================================
+#  System operacyjny
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+#  Ogólne
+# ============================================
+*.log
+logs/
