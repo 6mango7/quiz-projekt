@@ -1,3 +1,5 @@
+import { Emoji } from './Emoji'
+
 // Sekcja "Jak działa turniej?" – trzy kroki i przykładowa drabinka na 8 opcji
 
 // Przykładowy turniej: w każdej parze pierwsza liczba to indeks zwycięzcy (0 lub 1)
@@ -59,7 +61,7 @@ export function HowItWorks() {
                     <div key={pair.join()} className="bracket-match">
                       {pair.map((emoji, i) => (
                         <span key={emoji} className={`bracket-slot ${i === winner ? 'win' : ''}`}>
-                          {emoji}
+                          <Emoji char={emoji} />
                         </span>
                       ))}
                     </div>
@@ -71,8 +73,8 @@ export function HowItWorks() {
               <h3>Zwycięzca</h3>
               <div className="bracket-matches">
                 <div className="bracket-champion">
-                  <span className="bracket-crown">👑</span>
-                  🥟
+                  <Emoji char="👑" className="bracket-crown" />
+                  <Emoji char="🥟" />
                 </div>
               </div>
             </div>

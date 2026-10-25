@@ -19,6 +19,7 @@ import {
 } from './Icons'
 import { CATEGORIES } from '../utils/constants'
 import { capitalize } from '../utils/format'
+import { Emoji } from './Emoji'
 
 export function Header() {
   const { user } = useAuth()
@@ -51,9 +52,7 @@ export function Header() {
           <NavDropdown label="Kategorie" className="dropdown-categories">
             {CATEGORIES.map((c) => (
               <Link key={c.id} to={`/?kategoria=${c.id}`}>
-                <span className="dropdown-emoji" aria-hidden="true">
-                  {c.icon}
-                </span>
+                <Emoji char={c.icon} className="dropdown-emoji" />
                 {capitalize(c.label)}
               </Link>
             ))}

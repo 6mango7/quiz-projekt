@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { useTheme } from '../context/contexts'
 import { Carousel } from './Carousel'
 import { MoonIcon, SunIcon } from './Icons'
+import { Emoji } from './Emoji'
 
 // Kolorowe karty na stronie głównej – każda pokazuje jedną funkcję strony.
 // Makiety w środku to zwykły HTML + CSS (bez obrazków), animują się po najechaniu.
@@ -74,12 +75,16 @@ function DuelMock() {
       <span className="mock-round">Ćwierćfinał 2/4</span>
       <div className="mock-duel-pair">
         <div className="mock-option mock-option-a">
-          <span className="mock-emoji">🍕</span>
+          <span className="mock-emoji">
+            <Emoji char="🍕" />
+          </span>
           <span>Pizza</span>
         </div>
         <span className="mock-vs">vs</span>
         <div className="mock-option mock-option-b">
-          <span className="mock-emoji">🍣</span>
+          <span className="mock-emoji">
+            <Emoji char="🍣" />
+          </span>
           <span>Sushi</span>
         </div>
       </div>
@@ -96,14 +101,18 @@ function EditorMock() {
         <div className="mock-field">Najlepsza pizza</div>
         <ul className="mock-rows">
           <li>
-            <span className="mock-num">1</span>🍕 Margherita
+            <span className="mock-num">1</span>
+            <Emoji char="🍕" /> Margherita
           </li>
           <li>
-            <span className="mock-num">2</span>🌶️ Diavola
+            <span className="mock-num">2</span>
+            <Emoji char="🌶️" /> Diavola
           </li>
           <li className="mock-row-new">
             <span className="mock-num">3</span>
-            <span className="mock-typing">🍍 Hawajska</span>
+            <span className="mock-typing">
+              <Emoji char="🍍" /> Hawajska
+            </span>
           </li>
         </ul>
         <div className="mock-add">+ Dodaj opcję</div>
@@ -134,7 +143,9 @@ function RankingMock() {
           {RANKING.map((row, i) => (
             <li key={row.name} style={{ '--i': i }}>
               <span className="mock-place">{i + 1}</span>
-              <span className="mock-emoji-sm">{row.emoji}</span>
+              <span className="mock-emoji-sm">
+                <Emoji char={row.emoji} />
+              </span>
               <span className="mock-name">{row.name}</span>
               <span className="mock-bar">
                 {/* pasek względem lidera, jak w prawdziwym rankingu */}
@@ -182,16 +193,24 @@ function PodiumMock() {
   return (
     <div className="feature-body feature-body-bottom mock-podium" aria-hidden="true">
       <div className="mock-podium-col second">
-        <span className="mock-emoji">🐱</span>
+        <span className="mock-emoji">
+          <Emoji char="🐱" />
+        </span>
         <span className="mock-step">2</span>
       </div>
       <div className="mock-podium-col first">
-        <span className="mock-crown">👑</span>
-        <span className="mock-emoji">🦦</span>
+        <span className="mock-crown">
+          <Emoji char="👑" />
+        </span>
+        <span className="mock-emoji">
+          <Emoji char="🦦" />
+        </span>
         <span className="mock-step">1</span>
       </div>
       <div className="mock-podium-col third">
-        <span className="mock-emoji">🦊</span>
+        <span className="mock-emoji">
+          <Emoji char="🦊" />
+        </span>
         <span className="mock-step">3</span>
       </div>
     </div>

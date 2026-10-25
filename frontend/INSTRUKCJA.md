@@ -11,6 +11,7 @@ W folderze `frontend`:
 
 1. Zatrzymaj serwer (`Ctrl+C`) i usuń cały stary folder `src`.
 2. Wypakuj paczkę **bezpośrednio do folderu `frontend`** (zastąp istniejące pliki).
+   Paczka zawiera też folder `public/emoji` – zostanie dodany obok tego, co już jest w `public`.
    Po wypakowaniu musi istnieć `frontend\src\api` – a nie np. `frontend\quizownia\src\api`.
 3. Doinstaluj router i uruchom:
    ```bash
@@ -61,11 +62,25 @@ styles/       base.css – kolory motywów, przyciski, pola formularzy, chipy, z
 utils/        logika turnieju, formatowanie, kategorie
 ```
 
+Poza `src`: `public/emoji` – ikonki emoji (patrz niżej).
+
 Gotowe klasy, które przydadzą się na nowych stronach: przyciski `btn btn-primary`,
 `btn btn-outline`, `btn btn-highlight`, `btn-sm` / `btn-lg`, pola `field` + `field-label`,
 `field-error`, `form-error`, chipy `chips` + `chip`, zakładki `tabs tabs-underline` + `tab`,
 etykieta `tag`, link `text-link`. Kolory zawsze przez zmienne (`var(--accent)`, `var(--surface)`…),
 wtedy działają w obu motywach.
+
+## Ikony (emoji)
+
+Wszystkie emoji na stronie są obrazkami SVG z zestawu **Noto Emoji** od Google
+(folder `public/emoji`, licencja Apache 2.0 – plik `public/emoji/LICENSE.txt` musi zostać w projekcie).
+Dzięki temu wyglądają tak samo na Windowsie, Macu i telefonie.
+
+W kodzie używasz komponentu `<Emoji char="🍕" />` (`src/components/Emoji.jsx`) – ma rozmiar jak tekst obok.
+Plik nazywa się kodem znaku, np. 🍕 → `1f355.svg`. Jeśli jakiegoś emoji nie ma w folderze,
+strona pokaże zwykłe emoji z systemu. Brakujące pliki znajdziesz w repozytorium
+[googlefonts/noto-emoji](https://github.com/googlefonts/noto-emoji) w folderze `svg`
+(tam nazywają się np. `emoji_u1f355.svg` – wystarczy zmienić nazwę).
 
 ## Dane przykładowe
 

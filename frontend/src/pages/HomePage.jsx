@@ -12,6 +12,7 @@ import { EmptyState, ErrorState } from '../components/Feedback'
 import { ArrowLeftIcon } from '../components/Icons'
 import { CATEGORIES, categoryLabel } from '../utils/constants'
 import { capitalize, plural } from '../utils/format'
+import { Emoji } from '../components/Emoji'
 
 // Strona główna ma dwa widoki:
 //  - zwykły (powitanie, karty funkcji, popularne i nowe quizy, kategorie)
@@ -172,7 +173,7 @@ function Categories({ quizzes }) {
                     style={{ background: c.color }}
                     aria-hidden="true"
                   >
-                    {c.icon}
+                    <Emoji char={c.icon} />
                   </span>
                   <span className="category-tile-text">
                     <strong>{capitalize(c.label)}</strong>
@@ -275,7 +276,7 @@ function QuizBrowser({ search, category, sort }) {
             aria-pressed={category === c.id}
             onClick={() => setFilter('kategoria', c.id)}
           >
-            {c.icon} {capitalize(c.label)}
+            <Emoji char={c.icon} /> {capitalize(c.label)}
           </button>
         ))}
       </div>

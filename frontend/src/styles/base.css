@@ -207,6 +207,15 @@ code {
   font-size: 0.8rem;
 }
 
+/* emoji jako obrazki (components/Emoji.jsx) – mają rozmiar jak tekst obok */
+.emoji {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  user-select: none;
+}
+
 /* ---------- Przyciski ---------- */
 .btn {
   display: inline-flex;

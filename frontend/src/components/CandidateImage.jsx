@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { hueFromString } from '../utils/constants'
+import { Emoji } from './Emoji'
 
 // "JavaScript" -> "JS", "hot dog" -> "Hd", "wiosna" -> "Wi", "C++" -> "C++"
 function initials(name) {
@@ -39,7 +40,9 @@ export function CandidateImage({ candidate, className = '' }) {
         style={style}
         aria-hidden="true"
       >
-        <span>{candidate.emoji}</span>
+        <span>
+          <Emoji char={candidate.emoji} />
+        </span>
       </div>
     )
   }
