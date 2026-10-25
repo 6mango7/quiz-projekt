@@ -1,0 +1,906 @@
+/* =========================================================
+   STRONA GŁÓWNA
+   ========================================================= */
+
+.home-section {
+  padding: 28px 0;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px 24px;
+  margin-bottom: 18px;
+}
+
+.section-head h1,
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   POJEDYNEK DNIA
+   ========================================================= */
+.hero {
+  padding: 4px 0 20px;
+}
+
+.hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px 24px;
+  margin-bottom: 18px;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--red-text);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* mała czerwono-niebieska kreska przed etykietą */
+.hero-label::before {
+  content: '';
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--red) 50%, var(--blue) 50%);
+}
+
+.hero h1 {
+  margin: 4px 0 0;
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Arena: dwa zdjęcia przecięte po skosie */
+.arena {
+  position: relative;
+  height: clamp(320px, 40vw, 480px);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--ink);
+  isolation: isolate;
+}
+
+.arena-side {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  /* przycisk ma kształt swojej połówki – klikać można tylko w nią */
+  transition: filter 0.3s;
+}
+
+.side-a {
+  clip-path: polygon(0 0, 54.4% 0, 46.4% 100%, 0 100%);
+  animation: arena-in-left 0.6s var(--ease) both;
+}
+
+.side-b {
+  clip-path: polygon(55.6% 0, 100% 0, 100% 100%, 47.6% 100%);
+  animation: arena-in-right 0.6s var(--ease) both;
+}
+
+@keyframes arena-in-left {
+  from {
+    transform: translateX(-18%);
+  }
+}
+
+@keyframes arena-in-right {
+  from {
+    transform: translateX(18%);
+  }
+}
+
+/* zdjęcie zajmuje "swoją" część areny */
+.arena-side .candidate-img {
+  position: absolute;
+  top: 0;
+  width: 56%;
+  height: 100%;
+  transition:
+    transform 0.4s var(--ease),
+    filter 0.35s;
+}
+
+.side-a .candidate-img {
+  left: 0;
+}
+
+.side-b .candidate-img {
+  right: 0;
+}
+
+/* lekki kolor narożnika od zewnętrznej krawędzi */
+.arena-side::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.side-a::after {
+  background: linear-gradient(90deg, rgba(255, 75, 62, 0.35), transparent 30%);
+}
+
+.side-b::after {
+  background: linear-gradient(270deg, rgba(51, 85, 255, 0.35), transparent 30%);
+}
+
+.arena:not(.picked) .arena-side:hover .candidate-img {
+  transform: scale(1.04);
+}
+
+.arena-name {
+  position: absolute;
+  bottom: 18px;
+  z-index: 1;
+  max-width: 40%;
+  padding: 4px 14px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-style: italic;
+  font-weight: 800;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.side-a .arena-name {
+  left: 18px;
+  background: var(--red);
+}
+
+.side-b .arena-name {
+  right: 18px;
+  background: var(--blue);
+}
+
+.arena-side:focus-visible {
+  outline: none;
+}
+
+.arena-side:focus-visible .arena-name {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* po wyborze: przegrany szarzeje, zwycięzca dostaje znaczek */
+.picked-a .side-b .candidate-img,
+.picked-b .side-a .candidate-img {
+  filter: grayscale(0.85) brightness(0.5);
+}
+
+.arena-percent {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 4px 24px rgba(10, 8, 24, 0.6);
+  translate: 0 -50%;
+  animation: pop 0.4s var(--ease) both;
+}
+
+.side-a .arena-percent {
+  left: 12%;
+}
+
+.side-b .arena-percent {
+  right: 12%;
+}
+
+.arena-stamp {
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: var(--on-gold);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  transform: rotate(-4deg);
+  animation: stamp 0.35s var(--ease) both;
+}
+
+.side-a .arena-stamp {
+  left: 18px;
+}
+
+.side-b .arena-stamp {
+  right: 18px;
+}
+
+@keyframes stamp {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) scale(1.8);
+  }
+}
+
+/* znaczek VS na środku – "ląduje" po wjeździe zdjęć */
+.arena-vs {
+  position: absolute;
+  top: 50%;
+  left: 51%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(64px, 8vw, 92px);
+  aspect-ratio: 1;
+  border: 5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--on-gold);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-style: italic;
+  font-weight: 800;
+  pointer-events: none;
+  translate: -50% -50%;
+  rotate: -8deg;
+  animation: vs-land 0.45s 0.4s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+
+@keyframes vs-land {
+  from {
+    opacity: 0;
+    scale: 2.4;
+  }
+}
+
+.hero-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px 24px;
+  margin-top: 18px;
+}
+
+.hero-bottom p {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+/* =========================================================
+   LISTA QUIZÓW
+   ========================================================= */
+.browse {
+  scroll-margin-top: 80px;
+}
+
+.browse-count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 1.5em;
+  margin: 4px 0 0;
+  color: var(--sub);
+}
+
+.browse-chips {
+  margin-bottom: 24px;
+}
+
+.qgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 28px 20px;
+  transition: opacity 0.2s;
+}
+
+.qgrid.is-loading {
+  opacity: 0.5;
+}
+
+.show-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* ---------- Karta quizu ---------- */
+.qcard {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.qcard-cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.qcard-side {
+  position: absolute;
+  inset: 0;
+  transition: clip-path 0.35s var(--ease);
+}
+
+.qcard-a {
+  clip-path: polygon(0 0, 56% 0, 45% 100%, 0 100%);
+}
+
+.qcard-b {
+  clip-path: polygon(57.5% 0, 100% 0, 100% 100%, 46.5% 100%);
+}
+
+/* najechanie: skośna linia przesuwa się, jakby opcja A "naciskała" */
+.qcard:hover .qcard-a {
+  clip-path: polygon(0 0, 61% 0, 50% 100%, 0 100%);
+}
+
+.qcard:hover .qcard-b {
+  clip-path: polygon(62.5% 0, 100% 0, 100% 100%, 51.5% 100%);
+}
+
+.qcard-side .candidate-img {
+  position: absolute;
+  top: 0;
+  width: 62%;
+  height: 100%;
+}
+
+.qcard-a .candidate-img {
+  left: 0;
+}
+
+.qcard-b .candidate-img {
+  right: 0;
+}
+
+/* pasek koloru narożnika na dole każdej połówki */
+.qcard-side::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 70%;
+  height: 5px;
+}
+
+.qcard-a::after {
+  left: 0;
+  background: var(--red);
+}
+
+.qcard-b::after {
+  right: 0;
+  background: var(--blue);
+}
+
+.qcard-vs {
+  position: absolute;
+  top: 50%;
+  left: 51%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  aspect-ratio: 1;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--on-gold);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 800;
+  translate: -50% -50%;
+  rotate: -8deg;
+  transition: left 0.35s var(--ease);
+}
+
+.qcard:hover .qcard-vs {
+  left: 56%;
+}
+
+.qcard-count {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  background: rgba(10, 8, 24, 0.72);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.qcard-body h3 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  transition: color 0.15s;
+}
+
+.qcard:hover .qcard-body h3 {
+  color: var(--accent-text);
+}
+
+.qcard-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: var(--sub);
+  font-size: 0.92rem;
+}
+
+.qcard-author {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.qcard-stats {
+  display: flex;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.qcard-stats > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.qcard-star {
+  color: var(--star);
+  fill: currentColor;
+}
+
+.qcard-skeleton {
+  display: grid;
+  gap: 10px;
+}
+
+.qcard-skeleton-cover {
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+}
+
+.qcard-skeleton-line {
+  height: 18px;
+}
+
+.qcard-skeleton-line.short {
+  width: 55%;
+}
+
+/* =========================================================
+   JAK DZIAŁA TURNIEJ
+   ========================================================= */
+.how {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 40px;
+  padding: 36px 40px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.how h2 {
+  margin: 0 0 22px;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+}
+
+.how-steps {
+  display: grid;
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.how-steps li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0 12px;
+  counter-increment: step;
+}
+
+/* duże numery kroków w kolorach: czerwony, niebieski, złoty */
+.how-steps li::before {
+  content: counter(step);
+  grid-row: span 2;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.how-steps li:nth-child(1)::before {
+  color: var(--red);
+}
+
+.how-steps li:nth-child(2)::before {
+  color: var(--blue);
+}
+
+.how-steps li:nth-child(3)::before {
+  color: var(--gold);
+}
+
+.how-steps strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.how-steps span {
+  color: var(--sub);
+}
+
+/* drabinka */
+.bracket {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 0 24px;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--bg);
+}
+
+.bracket-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bracket-col h3 {
+  margin: 0 0 10px;
+  color: var(--sub);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.bracket-matches {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+  gap: 10px;
+}
+
+.bracket-match {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+/* linia do następnej rundy */
+.bracket-match::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 24px;
+  border-top: 2px solid var(--border);
+}
+
+.bracket-slot {
+  display: grid;
+  place-items: center;
+  height: 36px;
+  border-left: 4px solid var(--red);
+  border-radius: 6px;
+  font-size: 1.45rem;
+  opacity: 0.35;
+}
+
+.bracket-slot:nth-child(2) {
+  border-left-color: var(--blue);
+}
+
+.bracket-slot.win {
+  background: color-mix(in srgb, var(--gold) 30%, var(--surface));
+  opacity: 1;
+}
+
+.bracket-col-champion .bracket-matches {
+  align-items: center;
+}
+
+.bracket-champion {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--gold);
+  font-size: 2rem;
+  box-shadow: 0 8px 20px rgba(255, 201, 40, 0.35);
+}
+
+.bracket-crown {
+  position: absolute;
+  top: -22px;
+  font-size: 1.4rem;
+}
+
+/* =========================================================
+   ZACHĘTA NA DOLE
+   ========================================================= */
+.cta-band {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 48px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ukośne pasy czerwony / niebieski przy prawej krawędzi */
+.cta-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -40px;
+  bottom: 0;
+  width: 260px;
+  background: linear-gradient(
+    115deg,
+    transparent 0 30%,
+    var(--red) 30% 52%,
+    transparent 52% 56%,
+    var(--blue) 56% 100%
+  );
+  opacity: 0.9;
+}
+
+.cta-band > * {
+  position: relative;
+}
+
+.cta-band h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.cta-band p {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cta-band .btn {
+  margin-right: 140px;
+}
+
+/* =========================================================
+   MNIEJSZE EKRANY
+   ========================================================= */
+@media (max-width: 900px) {
+  .how {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  /* na telefonie arena dzieli się w poziomie: A na górze, B na dole */
+  .arena {
+    height: 440px;
+  }
+
+  .side-a {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 53%);
+  }
+
+  .side-b {
+    clip-path: polygon(0 54.4%, 100% 46.4%, 100% 100%, 0 100%);
+  }
+
+  @keyframes arena-in-left {
+    from {
+      transform: translateY(-18%);
+    }
+  }
+
+  @keyframes arena-in-right {
+    from {
+      transform: translateY(18%);
+    }
+  }
+
+  .arena-side .candidate-img {
+    width: 100%;
+    height: 55%;
+  }
+
+  .side-b .candidate-img {
+    top: auto;
+    bottom: 0;
+  }
+
+  .side-a::after {
+    background: linear-gradient(180deg, rgba(255, 75, 62, 0.35), transparent 30%);
+  }
+
+  .side-b::after {
+    background: linear-gradient(0deg, rgba(51, 85, 255, 0.35), transparent 30%);
+  }
+
+  .side-a .arena-name {
+    top: 14px;
+    bottom: auto;
+    left: 14px;
+    max-width: 70%;
+  }
+
+  .side-b .arena-name {
+    right: 14px;
+    bottom: 14px;
+    max-width: 70%;
+  }
+
+  .arena-vs {
+    left: 50%;
+  }
+
+  .side-a .arena-percent {
+    top: 26%;
+    left: auto;
+    right: 18px;
+  }
+
+  .side-b .arena-percent {
+    top: 74%;
+    right: auto;
+    left: 18px;
+  }
+
+  .side-a .arena-stamp {
+    top: auto;
+    bottom: calc(50% + 40px);
+    left: 14px;
+  }
+
+  .side-b .arena-stamp {
+    top: calc(50% + 40px);
+    right: 14px;
+  }
+
+  .hero-bottom .btn {
+    width: 100%;
+  }
+
+  .browse-chips {
+    flex-wrap: nowrap;
+    margin-right: -16px;
+    padding-right: 16px;
+    padding-bottom: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .browse-chips .chip {
+    flex-shrink: 0;
+  }
+
+  .qgrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 12px;
+  }
+
+  .qcard-body h3 {
+    font-size: 1.15rem;
+  }
+
+  .qcard-stats {
+    display: none;
+  }
+
+  .qcard-vs {
+    width: 32px;
+    font-size: 0.85rem;
+  }
+
+  .bracket {
+    gap: 0 14px;
+    padding: 14px 10px;
+  }
+
+  .bracket-match::after {
+    width: 14px;
+  }
+
+  .bracket-slot {
+    height: 30px;
+    font-size: 1.1rem;
+  }
+
+  .bracket-champion {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .cta-band {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 22px 32px;
+  }
+
+  /* paski tylko w prawym dolnym rogu, obok przycisku – nie wchodzą pod tekst */
+  .cta-band::before {
+    top: auto;
+    height: 110px;
+    width: 150px;
+    right: -30px;
+  }
+
+  .cta-band .btn {
+    margin-right: 0;
+  }
+}

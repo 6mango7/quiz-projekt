@@ -1,0 +1,98 @@
+/* =========================================================
+   PODSTRONY
+   Na razie tylko strona "W budowie" i 404.
+   Style nowych stron (logowanie, profil, quiz…) dopisuj tutaj.
+   ========================================================= */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 20px;
+  color: var(--sub);
+  font-size: 0.9rem;
+  transition:
+    color 0.15s,
+    gap 0.2s var(--ease);
+}
+
+.back-link:hover {
+  gap: 10px;
+  color: var(--text);
+}
+
+/* ---------- W budowie / 404 ---------- */
+.under-construction {
+  display: grid;
+  place-items: center;
+  min-height: 55vh;
+  padding-bottom: 24px;
+}
+
+.uc-card {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  padding: 40px 32px 32px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.uc-card h1 {
+  margin: 4px 0 0;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.uc-card p {
+  max-width: 360px;
+  margin: 0 0 8px;
+  color: var(--sub);
+}
+
+.uc-icon {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--gold);
+  font-size: 2.6rem;
+  animation: uc-wobble 2.4s ease-in-out infinite;
+}
+
+@keyframes uc-wobble {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: rotate(8deg);
+  }
+  30% {
+    transform: rotate(0);
+  }
+}
+
+.uc-number {
+  color: var(--red-text);
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.uc-path {
+  margin-top: 6px;
+  color: var(--sub);
+  font-size: 0.85rem;
+}
