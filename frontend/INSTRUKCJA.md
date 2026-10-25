@@ -19,14 +19,26 @@ W folderze `frontend`:
    npm run dev
    ```
 
+## Wygląd
+
+Strona wygląda jak ekran „VS” z gry: dwie strony pojedynku przedzielone ukośną linią.
+
+- **czerwony** (`--red`) to opcja A, **niebieski** (`--blue`) to opcja B, **złoty** (`--gold`) to zwycięzca
+  i główne przyciski, a **granat** (`--ink`) to tło „areny”
+- czcionki to **Barlow Condensed** (nagłówki, przyciski, pochyła i gruba) oraz **Barlow** (zwykły tekst),
+  ładowane z Google Fonts w `index.html`
+- domyślnie jest jasny motyw; przełącznik zapisuje wybór w przeglądarce
+
 ## Co jest na stronie głównej (`src/pages/HomePage.jsx`)
 
-- nagłówek: menu „Odkrywaj” i „Kategorie”, wyszukiwarka (klawisz `/`), przycisk „+”, zmiana motywu
-- powitanie i karuzela kart z funkcjami (`components/FeatureCards.jsx`)
-- polecany quiz z przyciskiem „Pokaż inny” (`components/QuizSpotlight.jsx`)
-- rzędy „Popularne quizy” i „Nowe quizy” (`components/QuizTile.jsx`, `components/Carousel.jsx`)
-- kafelki kategorii, sekcja „Jak działa turniej?” (`components/HowItWorks.jsx`), zachęta i stopka
-- wyszukiwanie, kategoria i „Zobacz wszystkie” pokazują listę wyników (`/?szukaj=…`, `/?kategoria=…`, `/?sort=…`)
+- nagłówek z logo (`components/Logo.jsx`), wyszukiwarką (klawisz `/`), przyciskiem „Stwórz quiz” i zmianą motywu
+- **pojedynek dnia** (`components/HeroDuel.jsx`): dwa zdjęcia z jednego quizu. Klikasz jedno i widzisz,
+  ile procent graczy wybiera tak samo. „Inny pojedynek” losuje kolejny quiz.
+- „Twoje quizy” (tylko po zalogowaniu)
+- siatka wszystkich quizów z sortowaniem (Popularne / Nowe / Najlepiej oceniane), kategoriami
+  i przyciskiem „Pokaż więcej” (`components/QuizCard.jsx`: okładka „A vs B” z dwóch zdjęć quizu)
+- „Jak działa turniej?” z przykładową drabinką (`components/HowItWorks.jsx`), zachęta do stworzenia quizu, stopka
+- wyszukiwanie, kategoria i sortowanie są w adresie: `/?szukaj=…`, `/?kategoria=…`, `/?sort=…`
 
 ## Do zrobienia
 
@@ -52,7 +64,8 @@ Gdy zrobisz stronę, utwórz plik w `src/pages/` i podmień `element` w `App.jsx
 ```
 api/          api.js – WSZYSTKIE zapytania do "serwera" (tu podłączycie backend)
               seed.js – dane przykładowe, storage.js – zapis w przeglądarce
-components/   nagłówek, stopka, karty quizów, karuzela, ikony (Icons.jsx), ...
+components/   nagłówek, stopka, logo, pojedynek dnia, karta quizu, zdjęcie opcji
+              (CandidateImage.jsx), ikony (Icons.jsx), emoji (Emoji.jsx), ...
 context/      logowanie (useAuth), motyw (useTheme), powiadomienia (useToast)
 hooks/        useApi – pobieranie danych ze stanem ładowania i błędu
 pages/        HomePage, strona "W budowie", 404
@@ -64,11 +77,19 @@ utils/        logika turnieju, formatowanie, kategorie
 
 Poza `src`: `public/emoji` – ikonki emoji (patrz niżej).
 
-Gotowe klasy, które przydadzą się na nowych stronach: przyciski `btn btn-primary`,
-`btn btn-outline`, `btn btn-highlight`, `btn-sm` / `btn-lg`, pola `field` + `field-label`,
-`field-error`, `form-error`, chipy `chips` + `chip`, zakładki `tabs tabs-underline` + `tab`,
-etykieta `tag`, link `text-link`. Kolory zawsze przez zmienne (`var(--accent)`, `var(--surface)`…),
-wtedy działają w obu motywach.
+Gotowe klasy, które przydadzą się na nowych stronach:
+
+- przyciski: `btn btn-primary` (złoty, najważniejsza akcja), `btn btn-dark` (granatowy),
+  `btn btn-outline`, `btn btn-danger` (np. usuwanie quizu), rozmiary `btn-sm` / `btn-lg`, `btn-block`
+- formularze: `field` + `field-label`, `field-hint`, `field-error`, `form-error`
+- chipy `chips` + `chip` (zaznaczony: `chip active`), zakładki `tabs` + `tab` (zaznaczona: `tab active`)
+- etykieta `tag`, link `text-link`, karta quizu `<QuizCard quiz={…} />`
+
+Kolory zawsze przez zmienne (`var(--surface)`, `var(--text)`, `var(--red)`, `var(--blue)`, `var(--gold)`…),
+wtedy działają w obu motywach. Nagłówki dostają czcionkę `var(--font-display)` automatycznie.
+
+Pomysł na rozgrywkę (`/quiz/:id/graj`): ten sam układ co pojedynek dnia – klasy `arena`,
+`arena-side side-a` / `side-b` i `arena-vs` z `home.css` możesz przenieść do `pages.css` i użyć ponownie.
 
 ## Ikony (emoji)
 

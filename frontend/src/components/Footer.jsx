@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import { useAuth, useTheme } from '../context/contexts'
+import { Logo } from './Logo'
 
 export function Footer() {
   const { user } = useAuth()
@@ -9,13 +10,8 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <Link to="/" className="logo">
-            <span className="logo-icon">?</span>
-            <span className="logo-text">
-              quiz<span>ownia</span>
-            </span>
-          </Link>
-          <p>Quizy w formie turnieju. Dwie opcje w każdej rundzie, jeden zwycięzca na końcu.</p>
+          <Logo />
+          <p>Quizy w formie turnieju. W każdej rundzie dwie opcje, na końcu jeden zwycięzca.</p>
         </div>
 
         <nav className="footer-col" aria-label="Graj">

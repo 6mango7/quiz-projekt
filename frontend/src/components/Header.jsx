@@ -3,23 +3,18 @@ import { Link, useNavigate, useSearchParams } from 'react-router'
 import { useAuth, useTheme, useToast } from '../context/contexts'
 import { useDismiss } from '../hooks/useDismiss'
 import { Avatar } from './Avatar'
+import { Logo } from './Logo'
 import {
   ChevronDownIcon,
-  FlameIcon,
   LogoutIcon,
   MoonIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
-  SparklesIcon,
-  StarIcon,
   SunIcon,
   UserIcon,
   XIcon,
 } from './Icons'
-import { CATEGORIES } from '../utils/constants'
-import { capitalize } from '../utils/format'
-import { Emoji } from './Emoji'
 
 export function Header() {
   const { user } = useAuth()
@@ -30,45 +25,13 @@ export function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <Link to="/" className="logo" aria-label="Quizownia – strona główna">
-          <span className="logo-icon">?</span>
-          <span className="logo-text">
-            quiz<span>ownia</span>
-          </span>
-        </Link>
-
-        <nav className="header-nav" aria-label="Główna nawigacja">
-          <NavDropdown label="Odkrywaj">
-            <Link to="/?sort=popular">
-              <FlameIcon /> Popularne quizy
-            </Link>
-            <Link to="/?sort=new">
-              <SparklesIcon /> Nowe quizy
-            </Link>
-            <Link to="/?sort=top">
-              <StarIcon /> Najlepiej oceniane
-            </Link>
-          </NavDropdown>
-          <NavDropdown label="Kategorie" className="dropdown-categories">
-            {CATEGORIES.map((c) => (
-              <Link key={c.id} to={`/?kategoria=${c.id}`}>
-                <Emoji char={c.icon} className="dropdown-emoji" />
-                {capitalize(c.label)}
-              </Link>
-            ))}
-          </NavDropdown>
-        </nav>
+        <Logo />
 
         <SearchBox />
 
         <div className="header-actions">
-          <Link
-            to="/stworz"
-            className="icon-btn header-create"
-            aria-label="Stwórz quiz"
-            title="Stwórz quiz"
-          >
-            <PlusIcon />
+          <Link to="/stworz" className="btn btn-outline btn-sm header-create">
+            <PlusIcon /> Stwórz quiz
           </Link>
           <button
             type="button"
@@ -90,7 +53,7 @@ export function Header() {
               <Link to="/logowanie" className="btn btn-outline btn-sm">
                 Zaloguj się
               </Link>
-              <Link to="/rejestracja" className="btn btn-highlight btn-sm header-register">
+              <Link to="/rejestracja" className="btn btn-primary btn-sm header-register">
                 Zarejestruj się
               </Link>
             </>
@@ -98,37 +61,6 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
-}
-
-// Rozwijane menu w nagłówku ("Odkrywaj", "Kategorie")
-function NavDropdown({ label, className = '', children }) {
-  const [open, setOpen] = useState(false)
-  const ref = useRef(null)
-  useDismiss(ref, open, () => setOpen(false))
-
-  // kliknięcie w link wewnątrz menu zamyka menu
-  function handleClick(e) {
-    if (e.target.closest('a')) setOpen(false)
-  }
-
-  return (
-    <div className="nav-dropdown" ref={ref}>
-      <button
-        type="button"
-        className={`nav-trigger ${open ? 'open' : ''}`}
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-      >
-        {label}
-        <ChevronDownIcon className={`chevron ${open ? 'open' : ''}`} />
-      </button>
-      {open && (
-        <div className={`dropdown dropdown-left ${className}`} onClick={handleClick}>
-          {children}
-        </div>
-      )}
-    </div>
   )
 }
 

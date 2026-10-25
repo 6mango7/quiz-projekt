@@ -30,9 +30,9 @@ const STEPS = [
   ['Wybierz quiz', 'i zdecyduj, ile opcji weźmie udział: 4, 8, 16 albo więcej.'],
   [
     'Wybieraj w parach',
-    'W każdej rundzie widzisz dwie opcje. Ta, którą klikniesz, przechodzi dalej.',
+    'W każdej rundzie widzisz dwa zdjęcia. To, które klikniesz, przechodzi dalej.',
   ],
-  ['Poznaj zwycięzcę', 'Na końcu zostaje jedna opcja. Sprawdź, czy inni gracze wybrali tak samo.'],
+  ['Poznaj zwycięzcę', 'Na końcu zostaje jedno. Sprawdź, czy inni gracze wybrali tak samo.'],
 ]
 
 export function HowItWorks() {

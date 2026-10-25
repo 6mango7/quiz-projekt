@@ -17,7 +17,7 @@ export function UnderConstructionPage({ title }) {
         <Link to="/" className="btn btn-primary">
           Wróć na stronę główną
         </Link>
-        <code className="uc-path">{pathname}</code>
+        <span className="uc-path">Adres: {pathname}</span>
       </div>
     </div>
   )
