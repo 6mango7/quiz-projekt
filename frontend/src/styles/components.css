@@ -1,0 +1,607 @@
+/* =========================================================
+   KOMPONENTY: układ, nagłówek, karty, oceny, okna, powiadomienia
+   ========================================================= */
+
+/* ---------- Układ ---------- */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1;
+  padding-top: 28px;
+  animation: page-in 0.4s var(--ease) both;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ---------- Nagłówek ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--surface-2);
+  transition: background-color 0.3s;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px 20px;
+  min-height: 64px;
+  padding: 10px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.logo-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 1.15rem;
+  transition: transform 0.3s var(--ease);
+}
+
+.logo:hover .logo-icon {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+.logo-text span {
+  color: var(--accent-text);
+}
+
+.header-nav {
+  display: flex;
+  gap: 2px;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius);
+  background: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nav-trigger:hover,
+.nav-trigger.open {
+  background: var(--surface-2);
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  max-width: 620px;
+  height: 44px;
+  margin: 0 auto;
+  padding: 0 10px 0 14px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background: var(--search-bg);
+  color: var(--sub);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.header-search:focus-within {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.header-search-icon {
+  flex-shrink: 0;
+  font-size: 1.15rem;
+}
+
+.header-search input {
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-weight: 500;
+}
+
+.header-search input:focus {
+  border: none;
+}
+
+.header-search input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.header-search-kbd {
+  flex-shrink: 0;
+  color: var(--sub);
+}
+
+.header-search-clear {
+  display: grid;
+  padding: 4px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--sub);
+  cursor: pointer;
+}
+
+.header-search-clear:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header .icon-btn {
+  border-radius: 50%;
+}
+
+.header-create {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.header-create:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.theme-icon {
+  display: grid;
+  animation: spin-in 0.45s var(--ease);
+}
+
+/* Menu użytkownika */
+.user-menu {
+  position: relative;
+}
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  border: none;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.user-menu-button:hover {
+  filter: brightness(0.97);
+}
+
+.chevron {
+  color: var(--sub);
+  transition: transform 0.2s var(--ease);
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Rozwijane menu */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  display: grid;
+  min-width: 220px;
+  padding: 8px;
+  border: 1px solid var(--surface-2);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  transform-origin: top right;
+  animation: pop 0.18s var(--ease);
+}
+
+.dropdown-left {
+  left: 0;
+  right: auto;
+  transform-origin: top left;
+}
+
+.dropdown-categories {
+  grid-template-columns: 1fr 1fr;
+  min-width: 360px;
+}
+
+.dropdown a,
+.dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+  background: var(--surface-2);
+}
+
+.dropdown svg {
+  color: var(--sub);
+  font-size: 1.1rem;
+}
+
+.dropdown-emoji {
+  font-size: 1.1rem;
+}
+
+.dropdown hr {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Stopka ---------- */
+.footer {
+  margin-top: 64px;
+  padding: 48px 0 28px;
+  border-top: 1px solid var(--surface-2);
+  background: var(--header-bg);
+  font-size: 0.95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer-brand p {
+  max-width: 300px;
+  margin: 14px 0 0;
+  color: var(--sub);
+}
+
+.footer-col h2 {
+  margin: 0 0 14px;
+  color: var(--sub);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.footer-col ul {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-col a {
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.footer-col a:hover {
+  color: var(--accent-text);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--surface-2);
+  color: var(--sub);
+  font-size: 0.88rem;
+}
+
+/* ---------- Powiadomienia ---------- */
+.toasts {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 260px;
+  max-width: 380px;
+  padding: 12px 10px 12px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-size: 0.85rem;
+  pointer-events: auto;
+  animation: toast-in 0.35s var(--ease);
+}
+
+.toast span:nth-child(2) {
+  flex: 1;
+}
+
+.toast.leaving {
+  animation: toast-out 0.25s var(--ease) forwards;
+}
+
+.toast-icon {
+  display: grid;
+  color: var(--accent-text);
+}
+
+.toast-error {
+  border-left-color: var(--error);
+}
+
+.toast-error .toast-icon {
+  color: var(--error);
+}
+
+.toast-close {
+  display: grid;
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: var(--sub);
+  cursor: pointer;
+}
+
+.toast-close:hover {
+  color: var(--text);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.95);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+/* ---------- Ładowanie i stany ---------- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--surface-2), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.3s infinite;
+}
+
+.skeleton-line {
+  height: 14px;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}
+
+.state {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 64px 16px;
+  text-align: center;
+}
+
+.state p {
+  margin: 0;
+  max-width: 420px;
+  color: var(--sub);
+}
+
+.state h3 {
+  margin: 0;
+}
+
+.state-code {
+  color: var(--accent-text);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  animation: pop 0.4s var(--ease);
+}
+
+.state-empty .state-code {
+  color: var(--sub);
+  font-size: 1.6rem;
+}
+
+.state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* ---------- Awatar i obrazki opcji ---------- */
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  background: var(--avatar-color);
+  color: #1d1e21;
+  font-size: calc(var(--avatar-size) * 0.42);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.candidate-img {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  container-type: size;
+  user-select: none;
+}
+
+.candidate-emoji {
+  background: hsl(var(--hue) 45% 50% / 0.18);
+}
+
+.candidate-emoji span {
+  font-size: 48cqmin;
+  line-height: 1;
+}
+
+.candidate-initials {
+  background: hsl(var(--hue) 38% 42%);
+  color: #fff;
+}
+
+.candidate-initials span {
+  font-size: 30cqmin;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.candidate-img.thumb {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+/* ---------- Mniejsze ekrany ---------- */
+@media (max-width: 1000px) {
+  .header-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .header-inner {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  /* wyszukiwarka w osobnym wierszu pod logo */
+  .header-search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+    height: 40px;
+  }
+
+  .header-search-kbd {
+    display: none;
+  }
+
+  .user-menu-name {
+    display: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-register,
+  .header-create {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .toasts {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    min-width: 0;
+    max-width: none;
+  }
+}
