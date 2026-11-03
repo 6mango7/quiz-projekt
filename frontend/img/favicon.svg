@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="ramka"><rect width="64" height="64" rx="14"/></clipPath>
+  </defs>
+  <g clip-path="url(#ramka)">
+    <rect width="64" height="64" fill="#3355ff"/>
+    <polygon points="0,0 38,0 26,64 0,64" fill="#ff4b3e"/>
+    <polygon points="38,0 42,0 30,64 26,64" fill="#17142b"/>
+  </g>
+  <text x="32" y="42" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="26" font-weight="900" font-style="italic" fill="#fff">VS</text>
+</svg>

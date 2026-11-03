@@ -1,0 +1,5 @@
+# W tym folderze są tylko zdjęcia wgrane przez użytkowników.
+# Na wszelki wypadek blokujemy uruchamianie tu plików PHP.
+<FilesMatch "\.(php|phtml|phar)$">
+    Require all denied
+</FilesMatch>
