@@ -1,0 +1,8 @@
+# Wszystkie pliki tekstowe z końcami linii LF (tak samo na Windowsie i w Dockerze)
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
