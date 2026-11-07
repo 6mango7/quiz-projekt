@@ -1,0 +1,645 @@
+/*
+    jednostki:
+    px   – stały rozmiar, zawsze taki sam
+    fr   – część wolnego miejsca w gridzie
+    auto – tyle, ile potrzebuje zawartość
+    %    – procent rodzica
+    vh   – procent wysokości okna
+    em   – względem wielkości czcionki elementu
+*/
+
+/* ---------- kolory: motyw jasny (domyślny) ---------- */
+:root{
+    --bg: #fbf2e2;         /* tło strony */
+    --card: #fffdf8;       /* tło kart, pól i przycisków */
+    --ink: #171717;        /* tekst, ramki i cienie */
+    --muted: #625a4e;      /* tekst drugoplanowy */
+    --on-color: #171717;   /* tekst na kolorowym tle */
+    --dots: #e6d6ba;       /* kropki w tle strony */
+    --yellow: #ffd23f;
+    --blue: #5b93ff;
+    --red: #ff5c4d;
+    --green: #3ac57e;
+    --pink: #ff8cc6;
+    --orange: #ff9f1c;
+    --purple: #a483ff;
+    --teal: #2ec4b6;
+    color-scheme: light;
+}
+
+/* ---------- motyw ciemny: ---------- */
+.dark{
+    --bg: #16162f;
+    --card: #22224a;
+    --ink: #f4efe3;
+    --muted: #b7b2cc;
+    --on-color: #16162f;
+    --dots: #2a2a56;
+    --yellow: #ffd84d;
+    --blue: #74a5ff;
+    --red: #ff6e61;
+    --green: #4bd891;
+    --pink: #ff9fd0;
+    --orange: #ffad3d;
+    --purple: #b597ff;
+    --teal: #45d7c8;
+    color-scheme: dark;
+}
+
+/* kolory kategorii, autorów, naklejek */
+.color-1{ --color: var(--yellow); }
+.color-2{ --color: var(--blue); }
+.color-3{ --color: var(--red); }
+.color-4{ --color: var(--green); }
+.color-5{ --color: var(--pink); }
+.color-6{ --color: var(--orange); }
+.color-7{ --color: var(--purple); }
+.color-8{ --color: var(--teal); }
+
+/* ---------- podstawy ---------- */
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dots) 1.6px, transparent 1.7px);
+    background-size: 24px 24px;
+    transition: background-color 0.3s;
+}
+
+/* strona to siatka z trzema rzędami: nagłówek, treść (rozciąga się – 1fr), stopka */
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 38px;
+    max-width: 1140px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 22px 24px 18px;
+    color: var(--ink);
+    font: 16px/1.5 'Archivo', system-ui, 'Segoe UI', sans-serif;
+    transition: color 0.3s;
+}
+
+main{
+    min-width: 0;
+}
+
+a{
+    color: inherit;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+h1, h2, h3, p{
+    margin: 0;
+}
+
+button{
+    font: inherit;
+    color: inherit;
+}
+
+:focus-visible{
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+}
+
+[hidden]{
+    display: none !important;
+}
+
+::selection{
+    background: var(--yellow);
+    color: var(--on-color);
+}
+
+.muted{
+    color: var(--muted);
+}
+
+/* grube, ściśnięte napisy wielkimi literami – jak na planszy teleturnieju */
+.section-title,
+.sticker,
+.button,
+.logo-text,
+.or-sign,
+.hero h1{
+    font-weight: 900;
+    font-stretch: 78%;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   elementy używane na wielu stronach
+   ========================================================================== */
+
+.card{
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: 6px 6px 0 var(--ink);
+}
+
+/* przekrzywiona kolorowa naklejka */
+.sticker{
+    display: inline-block;
+    padding: 3px 12px;
+    border: 3px solid var(--ink);
+    border-radius: 9px;
+    background: var(--color, var(--yellow));
+    color: var(--on-color);
+    font-size: 15px;
+    line-height: 1.3;
+    box-shadow: 3px 3px 0 var(--ink);
+    transform: rotate(-2.5deg);
+}
+
+/* mały znaczek z ramką, np. „najwięcej gier” */
+.badge{
+    display: inline-block;
+    padding: 1px 8px;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    background: var(--bg);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.section{
+    margin-top: 54px;
+}
+
+main > .section:first-child{
+    margin-top: 0;
+}
+
+.section-title{
+    font-size: 30px;
+    line-height: 1;
+}
+
+/* tytuł | znaczek | (wolne miejsce) | przycisk „wszystkie →” */
+.section-header{
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 10px 16px;
+    margin-bottom: 18px;
+}
+
+.section-header > *{
+    justify-self: start;
+}
+
+.section-header .more{
+    grid-column: 3;
+    justify-self: end;
+}
+
+/* pusta lista – ramka z przerywaną linią */
+.empty{
+    padding: 26px;
+    border: 3px dashed var(--ink);
+    border-radius: 16px;
+    font-weight: 600;
+    text-align: center;
+    list-style: none;
+}
+
+/* ---------- przyciski ---------- */
+
+.button{
+    display: inline-grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 3px solid var(--ink);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform 0.08s, box-shadow 0.08s;
+}
+
+.button:hover{
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--ink);
+}
+
+/* wciśnięty przycisk „wpada” w swój cień */
+.button:active{
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+}
+
+.button.primary{
+    background: var(--yellow);
+    color: var(--on-color);
+}
+
+.button.large{
+    padding: 14px 30px;
+    border-radius: 14px;
+    font-size: 24px;
+    box-shadow: 5px 5px 0 var(--ink);
+}
+
+.button.small{
+    padding: 5px 11px;
+    border-width: 2px;
+    border-radius: 9px;
+    font-size: 14px;
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* przyciski obok siebie: każdy w swojej kolumnie (grid-auto-flow: column), dosunięte do lewej */
+.buttons{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+}
+
+/* przycisk wyglądający jak link (stopka) */
+.link{
+    padding: 0;
+    border: 0;
+    background: none;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.link:hover{
+    text-decoration: underline 2px;
+}
+
+/* ==========================================================================
+   nagłówek i stopka (includes/header.php, includes/footer.php)
+   ========================================================================== */
+
+/* nagłówek: logo | menu (rozciąga się) | przycisk motywu | konto – nazwy obszarów w grid-template-areas */
+.site-header{
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: "logo menu theme account";
+    align-items: center;
+    gap: 10px 14px;
+    padding: 10px 12px 10px 14px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: 6px 6px 0 var(--ink);
+    animation: slide-down 0.4s ease-out;
+}
+
+.logo{
+    grid-area: logo;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-mark{
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--ink);
+    border-radius: 11px;
+    background: var(--yellow);
+    color: var(--on-color);
+    font-size: 25px;
+    font-weight: 900;
+    box-shadow: 2px 2px 0 var(--ink);
+    transform: rotate(-7deg);
+    transition: transform 0.25s;
+}
+
+.logo:hover .logo-mark{
+    transform: rotate(353deg) scale(1.08);
+}
+
+.logo-text{
+    font-size: 28px;
+    line-height: 1;
+}
+
+.menu{
+    grid-area: menu;
+    justify-self: start;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4px;
+    margin-left: 8px;
+}
+
+.menu a{
+    padding: 7px 12px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu a:hover{
+    border-color: var(--ink);
+}
+
+.menu a.active{
+    background: var(--ink);
+    color: var(--card);
+}
+
+.theme-button{
+    grid-area: theme;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--ink);
+    border-radius: 11px;
+    background: var(--bg);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.theme-button:hover{
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* w jasnym motywie widać księżyc (przełącz na ciemny), w ciemnym – słońce */
+.theme-button span{
+    animation: spin 0.4s ease-out;
+}
+
+.icon-light,
+.dark .icon-dark{
+    display: none;
+}
+
+.dark .icon-light{
+    display: inline;
+}
+
+.account{
+    grid-area: account;
+}
+
+/* stopka: napis z lewej, linki z prawej */
+.site-footer{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px 24px;
+    font-size: 14px;
+}
+
+.site-footer nav{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 18px;
+}
+
+.site-footer a{
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.site-footer a:hover{
+    text-decoration: underline 2px;
+}
+
+/* ==========================================================================
+   strona główna (index.php)
+   ========================================================================== */
+
+.hero{
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 30px;
+    padding: 34px 36px;
+    background: var(--blue);
+    color: var(--on-color);
+}
+
+.hero-text{
+    display: grid;
+    justify-items: start;
+    gap: 16px;
+}
+
+.hero h1{
+    font-size: 54px;
+    line-height: 0.95;
+}
+
+.hero p{
+    max-width: 560px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* dwa kafle z obrazkami i „czy?” pomiędzy nimi */
+.hero-board{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.hero-tile{
+    padding: 18px;
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    background: var(--card);
+    box-shadow: 5px 5px 0 var(--ink);
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero-tile img{
+    width: 100px;
+    height: 100px;
+}
+
+.hero-tile.right{
+    background: var(--yellow);
+    animation-delay: -1.5s;
+}
+
+/* czerwone kółko „czy?” */
+.or-sign{
+    display: grid;
+    place-items: center;
+    width: 74px;
+    height: 74px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--on-color);
+    font-size: 24px;
+    line-height: 1;
+    box-shadow: 4px 4px 0 var(--ink);
+    transform: rotate(-10deg);
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* ---------- siatka kart z quizami ---------- */
+
+.quiz-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.quiz-grid .empty{
+    grid-column: 1 / -1;
+}
+
+/* ==========================================================================
+   animacje
+   ========================================================================== */
+
+/* element z klasą "appear" wjeżdża od dołu */
+.appear{
+    animation: slide-up 0.45s ease-out backwards;
+}
+
+/* opóźnienia: kolejne sekcje wjeżdżają jedna po drugiej */
+.delay-1{ animation-delay: 0.08s; }
+.delay-2{ animation-delay: 0.16s; }
+
+@keyframes slide-up{
+    from{
+        opacity: 0;
+        transform: translateY(16px);
+    }
+}
+
+@keyframes slide-down{
+    from{
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes float{
+    50%{
+        transform: translateY(-12px) rotate(-3deg);
+    }
+}
+
+@keyframes pulse{
+    50%{
+        transform: rotate(-10deg) scale(1.1);
+    }
+}
+
+/* ktoś ma w systemie wyłączone animacje – szanujemy to */
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   telefony i wąskie okna
+   ========================================================================== */
+
+@media (max-width: 860px){
+    body{
+        gap: 26px;
+        padding: 14px 16px;
+    }
+
+    /* nagłówek w dwóch rzędach: logo, motyw i konto u góry, menu pod spodem (przewijane w bok) */
+    .site-header{
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas:
+            "logo theme account"
+            "menu menu menu";
+    }
+
+    .menu{
+        justify-self: stretch;
+        margin-left: 0;
+        overflow-x: auto;
+    }
+
+    /* przyciski jeden pod drugim, żeby duże nie wychodziły poza ekran */
+    .buttons{
+        grid-auto-flow: row;
+        justify-items: start;
+    }
+
+    /* tytuł i znaczek w jednym rzędzie, przycisk „wszystkie →” pod nimi */
+    .section-header{
+        grid-template-columns: auto 1fr;
+    }
+
+    .section-header .more{
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .site-footer{
+        grid-template-columns: 1fr;
+    }
+
+    .hero{
+        grid-template-columns: minmax(0, 1fr);
+        padding: 24px;
+    }
+
+    .hero h1{
+        font-size: 38px;
+    }
+
+    .hero-tile img{
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* bardzo wąsko: mniejszy napis, żeby logo, motyw i konto zmieściły się w jednym rzędzie */
+@media (max-width: 480px){
+    .logo{
+        gap: 6px;
+    }
+
+    .logo-text{
+        font-size: 18px;
+    }
+}
