@@ -1,5 +1,5 @@
 # quiz-projekt – frontend i backend osobno:
-#   frontend    – nginx: strony HTML, CSS, JS      → http://localhost:8080
+#   frontend    – Apache + PHP: strony, CSS, JS      → http://localhost:8080
 #                 adresy /api/... przekazuje do backendu
 #   backend     – Apache + PHP: API zwracające JSON → http://localhost:8000
 #   db          – baza danych MySQL
@@ -11,12 +11,11 @@
 
 services:
   frontend:
-    image: nginx:1.27-alpine
+    build: ./docker/frontend
     ports:
       - "8080:80"
     volumes:
-      - ./frontend:/usr/share/nginx/html:ro                         # strony – zmiany widać od razu
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./frontend:/var/www/html          # strony – zmiany widać od razu
     depends_on:
       - backend
 
