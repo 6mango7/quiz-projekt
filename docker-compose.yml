@@ -36,7 +36,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: quizownia
-      MYSQL_USER: quiz        # tego użytkownika używa backend (backend/includes/db.php)
+      MYSQL_USER: quiz        # tego użytkownika używa backend (backend/config/config.php)
       MYSQL_PASSWORD: quiz123
       TZ: Europe/Warsaw       # NOW() w bazie = czas polski, tak samo jak w PHP
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_polish_ci
