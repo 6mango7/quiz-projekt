@@ -1,5 +1,9 @@
 <?php
 require_once 'init.php';
 
-$db = new Database();
-var_dump($db->fetchOne('SELECT COUNT(*) AS ile FROM quizy'));
+jsonResponse([
+    'contentType' => $_SERVER['CONTENT_TYPE'] ?? '',
+    'body'        => file_get_contents('php://input'),
+    'post'        => $_POST,
+    'wynik'       => getRequestData(),
+]);
