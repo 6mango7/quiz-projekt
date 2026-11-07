@@ -8,14 +8,14 @@
     em   – względem wielkości czcionki elementu
 */
 
-/* ---------- kolory: motyw jasny (domyślny) ---------- */
+/* strony: wszystkie */
 :root{
-    --bg: #fbf2e2;         /* tło strony */
-    --card: #fffdf8;       /* tło kart, pól i przycisków */
-    --ink: #171717;        /* tekst, ramki i cienie */
-    --muted: #625a4e;      /* tekst drugoplanowy */
-    --on-color: #171717;   /* tekst na kolorowym tle */
-    --dots: #e6d6ba;       /* kropki w tle strony */
+    --bg: #fbf2e2;
+    --card: #fffdf8;
+    --ink: #171717;
+    --muted: #625a4e;
+    --on-color: #171717;
+    --dots: #e6d6ba;
     --yellow: #ffd23f;
     --blue: #5b93ff;
     --red: #ff5c4d;
@@ -27,7 +27,7 @@
     color-scheme: light;
 }
 
-/* ---------- motyw ciemny: ---------- */
+/* strony: wszystkie (klasę dodaje js/theme.js) */
 .dark{
     --bg: #16162f;
     --card: #22224a;
@@ -46,7 +46,7 @@
     color-scheme: dark;
 }
 
-/* kolory kategorii, autorów, naklejek */
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
 .color-1{ --color: var(--yellow); }
 .color-2{ --color: var(--blue); }
 .color-3{ --color: var(--red); }
@@ -56,12 +56,12 @@
 .color-7{ --color: var(--purple); }
 .color-8{ --color: var(--teal); }
 
-/* ---------- podstawy ---------- */
-
+/* strony: wszystkie */
 *{
     box-sizing: border-box;
 }
 
+/* strony: wszystkie */
 html{
     background-color: var(--bg);
     background-image: radial-gradient(var(--dots) 1.6px, transparent 1.7px);
@@ -69,7 +69,7 @@ html{
     transition: background-color 0.3s;
 }
 
-/* strona to siatka z trzema rzędami: nagłówek, treść (rozciąga się – 1fr), stopka */
+/* strony: wszystkie */
 body{
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -83,47 +83,56 @@ body{
     transition: color 0.3s;
 }
 
+/* strony: wszystkie */
 main{
     min-width: 0;
 }
 
+/* strony: wszystkie */
 a{
     color: inherit;
 }
 
+/* strony: wszystkie */
 img{
     display: block;
     max-width: 100%;
 }
 
+/* strony: wszystkie */
 h1, h2, h3, p{
     margin: 0;
 }
 
+/* strony: wszystkie */
 button{
     font: inherit;
     color: inherit;
 }
 
+/* strony: wszystkie */
 :focus-visible{
     outline: 3px solid var(--blue);
     outline-offset: 3px;
 }
 
+/* strony: wszystkie */
 [hidden]{
     display: none !important;
 }
 
+/* strony: wszystkie */
 ::selection{
     background: var(--yellow);
     color: var(--on-color);
 }
 
+/* strony: editor.php */
 .muted{
     color: var(--muted);
 }
 
-/* grube, ściśnięte napisy wielkimi literami – jak na planszy teleturnieju */
+/* strony: wszystkie (includes/header.php) */
 .section-title,
 .sticker,
 .button,
@@ -136,10 +145,7 @@ button{
     letter-spacing: 0.3px;
 }
 
-/* ==========================================================================
-   elementy używane na wielu stronach
-   ========================================================================== */
-
+/* strony: index.php, editor.php */
 .card{
     border: 3px solid var(--ink);
     border-radius: 18px;
@@ -147,7 +153,7 @@ button{
     box-shadow: 6px 6px 0 var(--ink);
 }
 
-/* przekrzywiona kolorowa naklejka */
+/* strony: index.php */
 .sticker{
     display: inline-block;
     padding: 3px 12px;
@@ -161,7 +167,7 @@ button{
     transform: rotate(-2.5deg);
 }
 
-/* mały znaczek z ramką, np. „najwięcej gier” */
+/* strony: index.php, quizzes.php, editor.php */
 .badge{
     display: inline-block;
     padding: 1px 8px;
@@ -173,20 +179,23 @@ button{
     white-space: nowrap;
 }
 
+/* strony: index.php, quizzes.php */
 .section{
     margin-top: 54px;
 }
 
+/* strony: index.php, quizzes.php */
 main > .section:first-child{
     margin-top: 0;
 }
 
+/* strony: index.php, quizzes.php, editor.php */
 .section-title{
     font-size: 30px;
     line-height: 1;
 }
 
-/* tytuł | znaczek | (wolne miejsce) | przycisk „wszystkie →” */
+/* strony: index.php, quizzes.php, editor.php */
 .section-header{
     display: grid;
     grid-template-columns: auto auto 1fr;
@@ -195,16 +204,18 @@ main > .section:first-child{
     margin-bottom: 18px;
 }
 
+/* strony: index.php, quizzes.php, editor.php */
 .section-header > *{
     justify-self: start;
 }
 
+/* strony: index.php */
 .section-header .more{
     grid-column: 3;
     justify-self: end;
 }
 
-/* pusta lista – ramka z przerywaną linią */
+/* strony: index.php, quizzes.php */
 .empty{
     padding: 26px;
     border: 3px dashed var(--ink);
@@ -214,8 +225,7 @@ main > .section:first-child{
     list-style: none;
 }
 
-/* ---------- przyciski ---------- */
-
+/* strony: wszystkie (includes/header.php) */
 .button{
     display: inline-grid;
     grid-auto-flow: column;
@@ -236,22 +246,25 @@ main > .section:first-child{
     transition: transform 0.08s, box-shadow 0.08s;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .button:hover{
     transform: translate(-1px, -1px);
     box-shadow: 5px 5px 0 var(--ink);
 }
 
-/* wciśnięty przycisk „wpada” w swój cień */
+/* strony: wszystkie (includes/header.php) */
 .button:active{
     transform: translate(3px, 3px);
     box-shadow: 0 0 0 var(--ink);
 }
 
+/* strony: wszystkie (includes/header.php) */
 .button.primary{
     background: var(--yellow);
     color: var(--on-color);
 }
 
+/* strony: index.php, editor.php */
 .button.large{
     padding: 14px 30px;
     border-radius: 14px;
@@ -259,6 +272,7 @@ main > .section:first-child{
     box-shadow: 5px 5px 0 var(--ink);
 }
 
+/* strony: wszystkie (includes/header.php) */
 .button.small{
     padding: 5px 11px;
     border-width: 2px;
@@ -267,7 +281,32 @@ main > .section:first-child{
     box-shadow: 2px 2px 0 var(--ink);
 }
 
-/* przyciski obok siebie: każdy w swojej kolumnie (grid-auto-flow: column), dosunięte do lewej */
+/* strony: editor.php */
+.button.danger{
+    background: var(--red);
+    color: var(--on-color);
+}
+
+/* strony: editor.php */
+.button.plain{
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+}
+
+/* strony: editor.php */
+.button.plain:hover{
+    transform: none;
+    text-decoration: underline 3px;
+}
+
+/* strony: wszystkie (includes/header.php) */
+.button:disabled{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* strony: index.php, editor.php */
 .buttons{
     display: grid;
     grid-auto-flow: column;
@@ -276,7 +315,7 @@ main > .section:first-child{
     gap: 12px;
 }
 
-/* przycisk wyglądający jak link (stopka) */
+/* strony: wszystkie (includes/footer.php) */
 .link{
     padding: 0;
     border: 0;
@@ -285,15 +324,152 @@ main > .section:first-child{
     cursor: pointer;
 }
 
+/* strony: wszystkie (includes/footer.php) */
 .link:hover{
     text-decoration: underline 2px;
 }
 
-/* ==========================================================================
-   nagłówek i stopka (includes/header.php, includes/footer.php)
-   ========================================================================== */
+/* strony: quizzes.php, editor.php */
+.field{
+    width: 100%;
+    padding: 10px 14px;
+    border: 3px solid var(--ink);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--ink);
+    font: inherit;
+    transition: box-shadow 0.1s;
+}
 
-/* nagłówek: logo | menu (rozciąga się) | przycisk motywu | konto – nazwy obszarów w grid-template-areas */
+/* strony: quizzes.php, editor.php */
+.field::placeholder{
+    color: var(--muted);
+}
+
+/* strony: quizzes.php, editor.php */
+.field:focus{
+    outline: none;
+    box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* strony: quizzes.php, editor.php */
+textarea.field{
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* strony: quizzes.php, editor.php */
+select.field{
+    cursor: pointer;
+}
+
+/* strony: editor.php */
+.form{
+    display: grid;
+    gap: 16px;
+}
+
+/* strony: editor.php */
+.form label{
+    display: grid;
+    gap: 6px;
+}
+
+/* strony: editor.php */
+.field-label{
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* strony: editor.php */
+.errors{
+    padding: 10px 16px;
+    border: 3px solid var(--ink);
+    border-radius: 12px;
+    background: var(--red);
+    color: var(--on-color);
+    font-weight: 600;
+    animation: shake 0.35s;
+}
+
+/* strony: editor.php */
+.errors ul{
+    margin: 0;
+    padding-left: 18px;
+}
+
+/* strony: editor.php */
+.breadcrumbs{
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+/* strony: quizzes.php, editor.php */
+.loading{
+    font-weight: 800;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+/* strony: quizzes.php, editor.php */
+.loading::after{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    border: 2px solid var(--ink);
+    background: var(--yellow);
+    animation: spin 0.8s steps(4) infinite;
+}
+
+/* strony: quizzes.php */
+.load-more{
+    display: grid;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* strony: index.php, quizzes.php, editor.php – HTML wstawia JavaScript */
+.image{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* strony: index.php, quizzes.php, editor.php – HTML wstawia JavaScript */
+.image.photo{
+    border: 2px solid var(--ink);
+}
+
+/* strony: index.php, quizzes.php, editor.php – HTML wstawia JavaScript */
+.image.emoji{
+    border-radius: 0;
+    object-fit: contain;
+}
+
+/* strony: index.php, quizzes.php, editor.php – HTML wstawia JavaScript */
+.image.letters,
+.image.missing{
+    display: inline-grid;
+    place-items: center;
+    border: 2px solid var(--ink);
+    background: var(--card);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* strony: editor.php – HTML wstawia JavaScript */
+.image.missing{
+    border-style: dashed;
+    color: var(--muted);
+}
+
+/* strony: wszystkie (includes/header.php) */
 .site-header{
     display: grid;
     grid-template-columns: auto 1fr auto auto;
@@ -308,6 +484,7 @@ main > .section:first-child{
     animation: slide-down 0.4s ease-out;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .logo{
     grid-area: logo;
     display: grid;
@@ -317,6 +494,7 @@ main > .section:first-child{
     text-decoration: none;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .logo-mark{
     display: grid;
     place-items: center;
@@ -333,15 +511,18 @@ main > .section:first-child{
     transition: transform 0.25s;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .logo:hover .logo-mark{
     transform: rotate(353deg) scale(1.08);
 }
 
+/* strony: wszystkie (includes/header.php) */
 .logo-text{
     font-size: 28px;
     line-height: 1;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .menu{
     grid-area: menu;
     justify-self: start;
@@ -351,6 +532,7 @@ main > .section:first-child{
     margin-left: 8px;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .menu a{
     padding: 7px 12px;
     border: 2px solid transparent;
@@ -360,15 +542,18 @@ main > .section:first-child{
     white-space: nowrap;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .menu a:hover{
     border-color: var(--ink);
 }
 
+/* strony: wszystkie (includes/header.php) */
 .menu a.active{
     background: var(--ink);
     color: var(--card);
 }
 
+/* strony: wszystkie (includes/header.php) */
 .theme-button{
     grid-area: theme;
     display: grid;
@@ -382,29 +567,33 @@ main > .section:first-child{
     cursor: pointer;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .theme-button:hover{
     box-shadow: 2px 2px 0 var(--ink);
 }
 
-/* w jasnym motywie widać księżyc (przełącz na ciemny), w ciemnym – słońce */
+/* strony: wszystkie (includes/header.php) */
 .theme-button span{
     animation: spin 0.4s ease-out;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .icon-light,
 .dark .icon-dark{
     display: none;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .dark .icon-light{
     display: inline;
 }
 
+/* strony: wszystkie (includes/header.php) */
 .account{
     grid-area: account;
 }
 
-/* stopka: napis z lewej, linki z prawej */
+/* strony: wszystkie (includes/footer.php) */
 .site-footer{
     display: grid;
     grid-template-columns: 1fr auto;
@@ -413,25 +602,25 @@ main > .section:first-child{
     font-size: 14px;
 }
 
+/* strony: wszystkie (includes/footer.php) */
 .site-footer nav{
     display: grid;
     grid-auto-flow: column;
     gap: 18px;
 }
 
+/* strony: wszystkie (includes/footer.php) */
 .site-footer a{
     font-weight: 800;
     text-decoration: none;
 }
 
+/* strony: wszystkie (includes/footer.php) */
 .site-footer a:hover{
     text-decoration: underline 2px;
 }
 
-/* ==========================================================================
-   strona główna (index.php)
-   ========================================================================== */
-
+/* strony: index.php */
 .hero{
     display: grid;
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -442,24 +631,27 @@ main > .section:first-child{
     color: var(--on-color);
 }
 
+/* strony: index.php */
 .hero-text{
     display: grid;
     justify-items: start;
     gap: 16px;
 }
 
+/* strony: index.php */
 .hero h1{
     font-size: 54px;
     line-height: 0.95;
 }
 
+/* strony: index.php */
 .hero p{
     max-width: 560px;
     font-size: 18px;
     font-weight: 500;
 }
 
-/* dwa kafle z obrazkami i „czy?” pomiędzy nimi */
+/* strony: index.php */
 .hero-board{
     display: grid;
     grid-auto-flow: column;
@@ -468,6 +660,7 @@ main > .section:first-child{
     gap: 14px;
 }
 
+/* strony: index.php */
 .hero-tile{
     padding: 18px;
     border: 3px solid var(--ink);
@@ -477,17 +670,19 @@ main > .section:first-child{
     animation: float 3s ease-in-out infinite;
 }
 
+/* strony: index.php */
 .hero-tile img{
     width: 100px;
     height: 100px;
 }
 
+/* strony: index.php */
 .hero-tile.right{
     background: var(--yellow);
     animation-delay: -1.5s;
 }
 
-/* czerwone kółko „czy?” */
+/* strony: index.php */
 .or-sign{
     display: grid;
     place-items: center;
@@ -504,8 +699,7 @@ main > .section:first-child{
     animation: pulse 1.6s ease-in-out infinite;
 }
 
-/* ---------- siatka kart z quizami ---------- */
-
+/* strony: index.php, quizzes.php */
 .quiz-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -515,21 +709,285 @@ main > .section:first-child{
     list-style: none;
 }
 
-.quiz-grid .empty{
+/* strony: index.php, quizzes.php */
+.quiz-grid .empty,
+.quiz-grid .loading{
     grid-column: 1 / -1;
 }
 
-/* ==========================================================================
-   animacje
-   ========================================================================== */
+/* strony: index.php, quizzes.php */
+.quiz-grid > li{
+    position: relative;
+    animation: slide-up 0.4s ease-out backwards;
+}
 
-/* element z klasą "appear" wjeżdża od dołu */
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.quiz-card{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.quiz-card:hover{
+    transform: translate(-3px, -3px) rotate(-0.6deg);
+    box-shadow: 9px 9px 0 var(--ink);
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.card-top{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 14px;
+    border-bottom: 3px solid var(--ink);
+    background: var(--color, var(--yellow));
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.card-top .image{
+    width: 76px;
+    height: 76px;
+    font-size: 24px;
+    transition: transform 0.2s;
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.quiz-card:hover .card-top .image:first-child{
+    transform: rotate(-8deg) scale(1.08);
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.quiz-card:hover .card-top .image:last-child{
+    transform: rotate(8deg) scale(1.08);
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.mini-or{
+    padding: 1px 8px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+    transform: rotate(-8deg);
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.card-body{
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    padding: 14px 16px 16px;
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.card-category{
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.card-title{
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+/* strony: index.php, quizzes.php – HTML wstawia JavaScript */
+.card-bottom{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+/* strony: quizzes.php */
+.filters{
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+/* strony: editor.php */
+.editor{
+    display: grid;
+    gap: 22px;
+    padding: 26px 28px 28px;
+}
+
+/* strony: editor.php */
+.title-field{
+    font-size: 24px;
+    font-weight: 800;
+}
+
+/* strony: editor.php */
+.editor .section-header{
+    margin-bottom: 0;
+}
+
+/* strony: editor.php */
+.option-list{
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: option-number;
+}
+
+/* strony: editor.php – HTML wstawia JavaScript */
+.option-row{
+    display: grid;
+    grid-template-columns: 26px 40px 1fr auto 34px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border: 2px dashed var(--ink);
+    border-radius: 14px;
+    animation: slide-up 0.2s ease-out;
+}
+
+/* strony: editor.php – HTML wstawia JavaScript */
+.option-row::before{
+    content: counter(option-number);
+    counter-increment: option-number;
+    font-weight: 900;
+    text-align: center;
+}
+
+/* strony: editor.php */
+.option-row .field{
+    padding: 7px 12px;
+}
+
+/* strony: editor.php – HTML wstawia JavaScript */
+.option-buttons{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 6px;
+}
+
+/* strony: editor.php – HTML wstawia JavaScript */
+.option-remove{
+    width: 34px;
+    height: 34px;
+    border: 2px solid var(--ink);
+    border-radius: 9px;
+    background: var(--card);
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* strony: editor.php – HTML wstawia JavaScript */
+.option-remove:hover{
+    background: var(--red);
+    color: var(--on-color);
+}
+
+/* strony: editor.php */
+.add-option{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+}
+
+/* strony: editor.php */
+.danger-zone{
+    display: grid;
+    justify-items: start;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 3px dashed var(--ink);
+}
+
+/* strony: editor.php */
+.modal{
+    width: min(640px, 100vw - 32px);
+    padding: 20px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+}
+
+/* strony: editor.php */
+.modal[open]{
+    animation: pop-in 0.2s ease-out;
+}
+
+/* strony: editor.php */
+.modal::backdrop{
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* strony: editor.php */
+.modal-top{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* strony: editor.php */
+.emoji-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    gap: 6px;
+    max-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* strony: editor.php */
+.emoji-grid button{
+    padding: 6px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: none;
+    cursor: pointer;
+}
+
+/* strony: editor.php */
+.emoji-grid button:hover{
+    border-color: var(--ink);
+    background: var(--bg);
+    transform: scale(1.12);
+}
+
+/* strony: editor.php */
+.emoji-grid img{
+    width: 32px;
+    height: 32px;
+    margin: auto;
+}
+
+/* strony: index.php, quizzes.php, editor.php */
 .appear{
     animation: slide-up 0.45s ease-out backwards;
 }
 
-/* opóźnienia: kolejne sekcje wjeżdżają jedna po drugiej */
+/* strony: index.php, editor.php */
 .delay-1{ animation-delay: 0.08s; }
+/* strony: index.php */
 .delay-2{ animation-delay: 0.16s; }
 
 @keyframes slide-up{
@@ -564,8 +1022,21 @@ main > .section:first-child{
     }
 }
 
-/* ktoś ma w systemie wyłączone animacje – szanujemy to */
+@keyframes pop-in{
+    from{
+        opacity: 0;
+        transform: translateY(10px) scale(0.96);
+    }
+}
+
+@keyframes shake{
+    25%{ transform: translateX(-6px); }
+    50%{ transform: translateX(6px); }
+    75%{ transform: translateX(-3px); }
+}
+
 @media (prefers-reduced-motion: reduce){
+    /* strony: wszystkie */
     *,
     *::before,
     *::after{
@@ -574,17 +1045,14 @@ main > .section:first-child{
     }
 }
 
-/* ==========================================================================
-   telefony i wąskie okna
-   ========================================================================== */
-
 @media (max-width: 860px){
+    /* strony: wszystkie */
     body{
         gap: 26px;
         padding: 14px 16px;
     }
 
-    /* nagłówek w dwóch rzędach: logo, motyw i konto u góry, menu pod spodem (przewijane w bok) */
+    /* strony: wszystkie (includes/header.php) */
     .site-header{
         grid-template-columns: 1fr auto auto;
         grid-template-areas:
@@ -592,53 +1060,87 @@ main > .section:first-child{
             "menu menu menu";
     }
 
+    /* strony: wszystkie (includes/header.php) */
     .menu{
         justify-self: stretch;
         margin-left: 0;
         overflow-x: auto;
     }
 
-    /* przyciski jeden pod drugim, żeby duże nie wychodziły poza ekran */
+    /* strony: index.php, editor.php */
     .buttons{
         grid-auto-flow: row;
         justify-items: start;
     }
 
-    /* tytuł i znaczek w jednym rzędzie, przycisk „wszystkie →” pod nimi */
+    /* strony: index.php, quizzes.php, editor.php */
     .section-header{
         grid-template-columns: auto 1fr;
     }
 
+    /* strony: index.php */
     .section-header .more{
         grid-column: 1 / -1;
         justify-self: start;
     }
 
+    /* strony: wszystkie (includes/footer.php) */
     .site-footer{
         grid-template-columns: 1fr;
     }
 
+    /* strony: index.php */
     .hero{
         grid-template-columns: minmax(0, 1fr);
         padding: 24px;
     }
 
+    /* strony: index.php */
     .hero h1{
         font-size: 38px;
     }
 
+    /* strony: index.php */
     .hero-tile img{
         width: 70px;
         height: 70px;
     }
+
+    /* strony: quizzes.php */
+    .filters{
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    /* strony: quizzes.php */
+    .filters input{
+        grid-column: 1 / -1;
+    }
+
+    /* strony: editor.php */
+    .editor{
+        padding: 20px 16px;
+    }
+
+    /* strony: editor.php – HTML wstawia JavaScript */
+    .option-row{
+        grid-template-columns: 26px 40px 1fr 34px;
+    }
+
+    /* strony: editor.php – HTML wstawia JavaScript */
+    .option-buttons{
+        grid-row: 2;
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
 }
 
-/* bardzo wąsko: mniejszy napis, żeby logo, motyw i konto zmieściły się w jednym rzędzie */
 @media (max-width: 480px){
+    /* strony: wszystkie (includes/header.php) */
     .logo{
         gap: 6px;
     }
 
+    /* strony: wszystkie (includes/header.php) */
     .logo-text{
         font-size: 18px;
     }
