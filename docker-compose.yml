@@ -1,5 +1,5 @@
 # quiz-projekt – frontend i backend osobno:
-#   frontend    – Apache + PHP: strony, CSS, JS      → http://localhost:8080
+#   frontend    – Apache + PHP: strony, CSS, JS     → http://localhost:8080
 #                 adresy /api/... przekazuje do backendu
 #   backend     – Apache + PHP: API zwracające JSON → http://localhost:8000
 #   db          – baza danych MySQL
@@ -15,16 +15,12 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./frontend:/var/www/html          # strony – zmiany widać od razu
-    depends_on:
-      - backend
+      - ./frontend:/var/www/html
 
   backend:
     build: ./docker/backend
     ports:
       - "8000:80"
-    environment:
-      TZ: Europe/Warsaw
     volumes:
       - ./backend:/var/www/html
     depends_on:
@@ -36,15 +32,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: quizownia
-      MYSQL_USER: quiz        # tego użytkownika używa backend (backend/includes/db.php)
+      MYSQL_USER: quiz
       MYSQL_PASSWORD: quiz123
-      TZ: Europe/Warsaw       # NOW() w bazie = czas polski, tak samo jak w PHP
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_polish_ci
+      TZ: Europe/Warsaw
     volumes:
       - dane-bazy:/var/lib/mysql
-      - ./database:/docker-entrypoint-initdb.d   # pliki .sql wgrywają się same przy pierwszym uruchomieniu
+      - ./database:/docker-entrypoint-initdb.d
     healthcheck:
-      # 127.0.0.1 (a nie localhost) – odpowiada dopiero, gdy pliki .sql są już wgrane
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
       interval: 5s
       timeout: 5s
@@ -56,7 +50,7 @@ services:
       - "8081:80"
     environment:
       PMA_HOST: db
-      PMA_USER: quiz          # logowanie automatyczne
+      PMA_USER: quiz
       PMA_PASSWORD: quiz123
     depends_on:
       db:
