@@ -6,7 +6,7 @@
         <section>
             <div class="section-top">
                 <h1>wszystkie quizy</h1>
-                <b class="badge" id="counter"></b>
+                <span class="badge" id="counter"></span>
             </div>
             <form id="filters" method="get" action="quizzes.php">
                 <input class="field" type="text" name="search" id="search" placeholder="szukaj quizu...">

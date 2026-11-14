@@ -22,7 +22,7 @@
                     </select>
                 </label>
                 <div id="options">
-                    <h3>opcje <b class="badge" id="options-info"></b></h3>
+                    <h3>opcje <span class="badge" id="options-info"></span></h3>
                     <ol id="option-list"></ol>
                     <div id="add-option">
                         <input class="field" type="text" id="new-option" maxlength="60" placeholder="nazwa nowej opcji, np. margherita">

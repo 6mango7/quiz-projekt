@@ -5,7 +5,7 @@
 ?>
         <section class="card" id="hero">
             <div id="hero-text">
-                <b class="sticker">to czy to?</b>
+                <span class="sticker">to czy to?</span>
                 <h1>Wybieraj, aż zostanie jeden.</h1>
                 <p>
                     Każdy quiz to turniej: pokazujemy dwie opcje, Ty wybierasz lepszą.
@@ -24,7 +24,7 @@
 
                     $text = "";
                     $text .= "<div class='hero-tile'><img src='img/emoji/$codes[$left].svg' alt='$names[$left]'></div>";
-                    $text .= "<b id='or-sign'>czy?</b>";
+                    $text .= "<span id='or-sign'>czy?</span>";
                     $text .= "<div class='hero-tile yellow'><img src='img/emoji/$codes[$right].svg' alt='$names[$right]'></div>";
                     echo $text;
                 ?>
@@ -33,7 +33,7 @@
         <section>
             <div class="section-top">
                 <h2>popularne</h2>
-                <b class="badge">najwięcej gier</b>
+                <span class="badge">najwięcej gier</span>
                 <a class="button" href="quizzes.php?sort=popular">wszystkie</a>
             </div>
             <ul class="quiz-list">
@@ -43,7 +43,7 @@
         <section>
             <div class="section-top">
                 <h2>nowe</h2>
-                <b class="badge">ostatnio dodane</b>
+                <span class="badge">ostatnio dodane</span>
                 <a class="button" href="quizzes.php?sort=new">wszystkie</a>
             </div>
             <ul class="quiz-list">

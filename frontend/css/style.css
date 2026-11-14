@@ -587,6 +587,116 @@ h3{
     height: 32px;
 }
 
+/* o autorach */
+#about{
+    display: grid;
+    justify-items: start;
+    gap: 18px;
+    padding: 34px 36px;
+    background-color: #ff8cc6;
+    color: #171717;
+}
+
+#about h1{
+    font-size: 54px;
+}
+
+#about p{
+    max-width: 560px;
+    font-size: 18px;
+}
+
+#authors{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.author{
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    padding: 28px 22px;
+    text-align: center;
+}
+
+.avatar{
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border: 3px solid #171717;
+    border-radius: 18px;
+    color: #171717;
+    font-size: 42px;
+    font-weight: 900;
+    box-shadow: 4px 4px 0 #171717;
+}
+
+#chips{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+#chips li{
+    padding: 5px 14px;
+    border: 2px solid #171717;
+    border-radius: 20px;
+    background-color: #fffdf8;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* kontakt */
+#contact-columns{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+    gap: 28px;
+}
+
+.card-header{
+    padding: 12px 20px;
+    border-bottom: 3px solid #171717;
+    border-radius: 15px 15px 0 0;
+    color: #171717;
+    font-size: 24px;
+}
+
+#contact{
+    display: grid;
+    gap: 16px;
+    padding: 22px;
+}
+
+#contact-info{
+    display: grid;
+    gap: 16px;
+    padding: 22px;
+}
+
+#contact-info ul{
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.info-label{
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 /* kolory */
 .yellow{
     background-color: #ffd23f;
@@ -653,6 +763,18 @@ h3{
 .dark .red{
     background-color: #ff5c4d;
     color: #171717;
+}
+
+.dark .avatar, .dark .card-header, .dark #chips li{
+    border-color: #f4efe3;
+}
+
+.dark .avatar{
+    box-shadow: 4px 4px 0 #f4efe3;
+}
+
+.dark #chips li{
+    background-color: #22224a;
 }
 
 /* tablet i telefon */
@@ -727,6 +849,18 @@ h3{
         left: 16px;
         right: 16px;
         width: auto;
+    }
+
+    #about{
+        padding: 24px;
+    }
+
+    #about h1{
+        font-size: 38px;
+    }
+
+    #contact-columns{
+        grid-template-columns: 1fr;
     }
 }
 
