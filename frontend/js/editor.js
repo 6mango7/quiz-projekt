@@ -10,9 +10,6 @@ function loadQuiz(){
 function drawOptions(){
 }
 
-function newOptionKey(event){
-}
-
 function addOption(){
 }
 
@@ -31,10 +28,10 @@ function openEmoji(){
 function chooseEmoji(){
 }
 
-function closeEmojiModal(){
+function closeEmoji(){
 }
 
-function saveQuiz(event){
+function saveQuiz(){
 }
 
 function deleteQuiz(){
