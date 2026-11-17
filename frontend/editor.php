@@ -53,6 +53,8 @@
             </div>
         </section>
 <?php include 'includes/footer.php'; ?>
+    <!-- najpierw wygląd, potem komunikacja z bazą (ona uruchamia edytor) -->
     <script src="js/editor.js"></script>
+    <script src="js/editor-api.js"></script>
 </body>
 </html>

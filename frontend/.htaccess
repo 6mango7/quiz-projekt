@@ -1,0 +1,5 @@
+# zły adres -> pokazujemy naszą stronę 404
+ErrorDocument 404 /404.php
+
+# folderu includes nie da się otworzyć w przeglądarce
+RedirectMatch 404 ^/includes/
