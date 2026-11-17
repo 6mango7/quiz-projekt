@@ -596,6 +596,13 @@ h3{
     font-weight: bold;
 }
 
+/* lista błędów (wstawia JavaScript) */
+/* używa: editor.php, contact.php, login.php */
+#errors ul, #login-errors ul, #register-errors ul{
+    margin: 0;
+    padding-left: 18px;
+}
+
 /* używa: editor.php */
 #editor-buttons{
     display: grid;
@@ -771,6 +778,12 @@ h3{
     padding: 22px;
 }
 
+/* naklejka i przycisk po wysłaniu wiadomości (wstawia JavaScript) */
+/* używa: contact.php */
+#contact .sticker, #contact .button{
+    justify-self: start;
+}
+
 /* używa: contact.php */
 #contact-info{
     display: grid;
@@ -827,7 +840,7 @@ h3{
     padding: 22px;
 }
 
-/* używa: login.php */
+/* używa: login.php, contact.php */
 .bold{
     font-weight: bold;
 }
@@ -876,7 +889,7 @@ h3{
 .color-2{ background-color: #5b93ff; }
 /* używa: na razie żadna */
 .color-3{ background-color: #ff5c4d; }
-/* używa: authors.php, login.php */
+/* używa: authors.php, login.php, contact.php */
 .color-4{ background-color: #3ac57e; }
 /* używa: contact.php */
 .color-5{ background-color: #ff8cc6; }

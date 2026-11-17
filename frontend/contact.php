@@ -47,6 +47,8 @@
             </aside>
         </div>
 <?php include 'includes/footer.php'; ?>
+    <!-- najpierw wygląd, potem komunikacja z bazą -->
     <script src="js/contact.js"></script>
+    <script src="js/contact-api.js"></script>
 </body>
 </html>
