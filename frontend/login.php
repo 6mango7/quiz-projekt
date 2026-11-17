@@ -58,6 +58,8 @@
             </section>
         </div>
 <?php include 'includes/footer.php'; ?>
+    <!-- najpierw wygląd, potem komunikacja z bazą -->
     <script src="js/login.js"></script>
+    <script src="js/login-api.js"></script>
 </body>
 </html>
