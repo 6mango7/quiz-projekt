@@ -10,11 +10,18 @@ function jsonResponse(mixed $data, int $status = 200): never
     exit;
 }
 
-//wysyla blad w formacie {"error": "..."}
+
+//wysyla jeden blad - zawsze jako lista {"errors": ["..."]}
 function jsonError(string $message, int $status = 400): never
 {
-    jsonResponse(['error' => $message], $status);
+    jsonErrors([$message], $status);
 }
+//wysyla kilka bledow naraz np. z walidacji formularza
+function jsonErrors(array $errors, int $status = 422): never
+{
+    jsonResponse(['errors' => $errors], $status);
+}
+
 
 //endpoint dziala tylko dla podanej metody (GET/POST)
 function requireMethod(string $method): void

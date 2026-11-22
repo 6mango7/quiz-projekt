@@ -32,7 +32,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: quizownia
+<<<<<<< HEAD
+      MYSQL_USER: quiz        # tego użytkownika używa backend (backend/config/config.php)
+=======
       MYSQL_USER: quiz
+>>>>>>> develop
       MYSQL_PASSWORD: quiz123
       TZ: Europe/Warsaw
     volumes:
