@@ -140,7 +140,7 @@ textarea{
     list-style: none;
 }
 
-/* używa: quizzes.php, editor.php */
+/* używa: quizzes.php, editor.php, profile.php */
 .loading{
     grid-column: 1 / -1;
     font-weight: bold;
@@ -148,12 +148,12 @@ textarea{
     list-style: none;
 }
 
-/* używa: editor.php, contact.php, login.php */
+/* używa: editor.php, contact.php, login.php, profile.php */
 .muted{
     color: #625a4e;
 }
 
-/* używa: index.php, quizzes.php */
+/* używa: index.php, quizzes.php, profile.php */
 .section-top{
     display: grid;
     grid-template-columns: auto auto 1fr;
@@ -163,7 +163,7 @@ textarea{
     margin-bottom: 18px;
 }
 
-/* używa: index.php, quizzes.php */
+/* używa: index.php, quizzes.php, profile.php */
 .section-top .button{
     justify-self: end;
 }
@@ -354,7 +354,7 @@ footer a:hover{
 }
 
 /* lista quizów (karty wstawia JavaScript) */
-/* używa: index.php, quizzes.php */
+/* używa: index.php, quizzes.php, profile.php */
 .quiz-list{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -719,7 +719,7 @@ h3{
     text-align: center;
 }
 
-/* używa: authors.php */
+/* używa: authors.php, profile.php */
 .avatar{
     display: grid;
     place-items: center;
@@ -864,6 +864,114 @@ h3{
     line-height: 1;
 }
 
+/* profil */
+/* używa: profile.php */
+#profile-head{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 22px;
+    padding: 24px;
+}
+
+/* używa: profile.php */
+#profile-head h1{
+    overflow-wrap: anywhere;
+}
+
+/* używa: profile.php */
+#profile-description{
+    margin-top: 8px;
+}
+
+/* używa: profile.php */
+#settings-link, #new-quiz{
+    display: none;
+}
+
+/* używa: profile.php */
+#stats{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+/* używa: profile.php */
+.stat{
+    padding: 10px 14px;
+    border: 3px solid #171717;
+    border-radius: 14px;
+    background-color: #fffdf8;
+}
+
+/* używa: profile.php */
+.stat-label{
+    display: block;
+    color: #625a4e;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* używa: profile.php */
+.stat-value{
+    display: block;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+/* używa: profile.php */
+#last-ratings{
+    display: grid;
+    gap: 16px;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ocena na liście (wstawia JavaScript) */
+/* używa: profile.php */
+#last-ratings li{
+    padding: 12px 16px;
+    border: 3px solid #171717;
+    border-radius: 14px;
+    background-color: #fffdf8;
+}
+
+/* napisy "ładuję oceny..." i "Brak ocen." bez ramki karty */
+/* używa: profile.php */
+#last-ratings .loading{
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* używa: profile.php (wstawia JavaScript) */
+#last-ratings .empty{
+    border-style: dashed;
+    background-color: transparent;
+}
+
+/* używa: profile.php (wstawia JavaScript) */
+.rating-top{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 12px;
+    font-size: 14px;
+}
+
+/* używa: profile.php (wstawia JavaScript) */
+.rating-top a{
+    font-weight: bold;
+}
+
+/* używa: profile.php (wstawia JavaScript) */
+.rating-text{
+    margin-top: 6px;
+}
+
 /* kolory */
 /* używa: wszystkie strony */
 .yellow{
@@ -883,7 +991,7 @@ h3{
     color: #171717;
 }
 
-/* używa: authors.php, login.php */
+/* używa: authors.php, login.php, profile.php */
 .color-1{ background-color: #ffd23f; }
 /* używa: authors.php, login.php */
 .color-2{ background-color: #5b93ff; }
@@ -941,7 +1049,7 @@ h3{
     color: #22224a;
 }
 
-/* używa: index.php, quizzes.php, editor.php, contact.php, login.php (wstawia JavaScript) */
+/* używa: index.php, quizzes.php, editor.php, contact.php, login.php, profile.php (wstawia JavaScript) */
 .dark .muted, .dark .card-category{
     color: #b7b2cc;
 }
@@ -964,12 +1072,12 @@ h3{
     color: #171717;
 }
 
-/* używa: authors.php, contact.php, login.php */
+/* używa: authors.php, contact.php, login.php, profile.php */
 .dark .avatar, .dark .card-header, .dark #chips li{
     border-color: #f4efe3;
 }
 
-/* używa: authors.php */
+/* używa: authors.php, profile.php */
 .dark .avatar{
     box-shadow: 4px 4px 0 #f4efe3;
 }
@@ -977,6 +1085,22 @@ h3{
 /* używa: authors.php */
 .dark #chips li{
     background-color: #22224a;
+}
+
+/* używa: profile.php */
+.dark .stat, .dark #last-ratings li{
+    border-color: #f4efe3;
+    background-color: #22224a;
+}
+
+/* używa: profile.php */
+.dark #last-ratings .loading, .dark #last-ratings .empty{
+    background-color: transparent;
+}
+
+/* używa: profile.php */
+.dark .stat-label{
+    color: #b7b2cc;
 }
 
 /* tablet i telefon */
@@ -1000,12 +1124,12 @@ h3{
         grid-template-columns: 1fr;
     }
 
-    /* używa: index.php, quizzes.php */
+    /* używa: index.php, quizzes.php, profile.php */
     .section-top{
         grid-template-columns: auto 1fr;
     }
 
-    /* używa: index.php, quizzes.php */
+    /* używa: index.php, quizzes.php, profile.php */
     .section-top .button{
         grid-column: 1 / 3;
         justify-self: start;
@@ -1092,6 +1216,17 @@ h3{
     /* używa: contact.php, login.php */
     #contact-columns, #forms{
         grid-template-columns: 1fr;
+    }
+
+    /* używa: profile.php */
+    #profile-head{
+        grid-template-columns: auto 1fr;
+    }
+
+    /* używa: profile.php */
+    #settings-link{
+        grid-column: 1 / 3;
+        justify-self: start;
     }
 }
 
