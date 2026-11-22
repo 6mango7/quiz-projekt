@@ -113,7 +113,7 @@ input, select, textarea, button{
     transform: rotate(-3deg);
 }
 
-/* używa: quizzes.php, editor.php, contact.php, login.php */
+/* używa: quizzes.php, editor.php, contact.php, login.php, settings.php */
 .field{
     width: 100%;
     padding: 10px 14px;
@@ -123,7 +123,7 @@ input, select, textarea, button{
     color: #171717;
 }
 
-/* używa: editor.php, contact.php */
+/* używa: editor.php, contact.php, settings.php */
 textarea{
     height: 100px;
     resize: vertical;
@@ -148,7 +148,7 @@ textarea{
     list-style: none;
 }
 
-/* używa: editor.php, contact.php, login.php, profile.php */
+/* używa: editor.php, contact.php, login.php, profile.php, settings.php */
 .muted{
     color: #625a4e;
 }
@@ -489,7 +489,7 @@ footer a:hover{
 }
 
 /* edytor */
-/* używa: editor.php */
+/* używa: editor.php, settings.php */
 #breadcrumbs{
     margin-bottom: 16px;
     font-weight: bold;
@@ -502,7 +502,7 @@ footer a:hover{
     padding: 26px 28px;
 }
 
-/* używa: editor.php, contact.php, login.php */
+/* używa: editor.php, contact.php, login.php, settings.php */
 label{
     display: grid;
     gap: 6px;
@@ -585,8 +585,9 @@ h3{
     margin-top: 8px;
 }
 
-/* używa: editor.php, contact.php, login.php */
-#errors, #login-errors, #register-errors{
+/* używa: editor.php, contact.php, login.php, settings.php */
+#errors, #login-errors, #register-errors,
+#profile-errors, #password-errors, #delete-errors{
     display: none;
     padding: 10px 16px;
     border: 3px solid #171717;
@@ -597,8 +598,9 @@ h3{
 }
 
 /* lista błędów (wstawia JavaScript) */
-/* używa: editor.php, contact.php, login.php */
-#errors ul, #login-errors ul, #register-errors ul{
+/* używa: editor.php, contact.php, login.php, settings.php */
+#errors ul, #login-errors ul, #register-errors ul,
+#profile-errors ul, #password-errors ul, #delete-errors ul{
     margin: 0;
     padding-left: 18px;
 }
@@ -762,7 +764,7 @@ h3{
     gap: 28px;
 }
 
-/* używa: contact.php, login.php */
+/* używa: contact.php, login.php, settings.php */
 .card-header{
     padding: 12px 20px;
     border-bottom: 3px solid #171717;
@@ -833,7 +835,7 @@ h3{
     gap: 28px;
 }
 
-/* używa: login.php */
+/* używa: login.php, settings.php */
 .account-form{
     display: grid;
     gap: 16px;
@@ -972,6 +974,21 @@ h3{
     margin-top: 6px;
 }
 
+/* ustawienia */
+/* używa: settings.php */
+#settings{
+    display: grid;
+    gap: 26px;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+/* używa: settings.php */
+#theme-choice .button{
+    margin: 0 10px 10px 0;
+}
+
 /* kolory */
 /* używa: wszystkie strony */
 .yellow{
@@ -979,7 +996,7 @@ h3{
     color: #171717;
 }
 
-/* używa: editor.php, 404.php */
+/* używa: editor.php, 404.php, settings.php */
 .red{
     background-color: #ff5c4d;
     color: #171717;
@@ -991,13 +1008,13 @@ h3{
     color: #171717;
 }
 
-/* używa: authors.php, login.php, profile.php */
+/* używa: authors.php, login.php, profile.php, settings.php */
 .color-1{ background-color: #ffd23f; }
-/* używa: authors.php, login.php */
+/* używa: authors.php, login.php, settings.php */
 .color-2{ background-color: #5b93ff; }
-/* używa: na razie żadna */
+/* używa: settings.php */
 .color-3{ background-color: #ff5c4d; }
-/* używa: authors.php, login.php, contact.php */
+/* używa: authors.php, login.php, contact.php, settings.php */
 .color-4{ background-color: #3ac57e; }
 /* używa: contact.php */
 .color-5{ background-color: #ff8cc6; }
@@ -1029,7 +1046,8 @@ h3{
 /* używa: wszystkie strony */
 .dark .card, .dark .button, .dark .field, .dark .badge, .dark .sticker, .dark .hero-tile, .dark #or-sign,
 .dark .empty, .dark .card-top, .dark .mini-or, .dark .letters, .dark .missing, .dark .option-row,
-.dark #errors, .dark #login-errors, .dark #register-errors, .dark #delete-zone, .dark #menu a:hover, .dark #emoji-list button:hover{
+.dark #errors, .dark #login-errors, .dark #register-errors,
+.dark #profile-errors, .dark #password-errors, .dark #delete-errors, .dark #delete-zone, .dark #menu a:hover, .dark #emoji-list button:hover{
     border-color: #f4efe3;
 }
 
@@ -1049,7 +1067,7 @@ h3{
     color: #22224a;
 }
 
-/* używa: index.php, quizzes.php, editor.php, contact.php, login.php, profile.php (wstawia JavaScript) */
+/* używa: index.php, quizzes.php, editor.php, contact.php, login.php, profile.php, settings.php (wstawia JavaScript) */
 .dark .muted, .dark .card-category{
     color: #b7b2cc;
 }
@@ -1060,7 +1078,7 @@ h3{
     color: #171717;
 }
 
-/* używa: editor.php, 404.php */
+/* używa: editor.php, 404.php, settings.php */
 .dark .red{
     background-color: #ff5c4d;
     color: #171717;
@@ -1072,7 +1090,7 @@ h3{
     color: #171717;
 }
 
-/* używa: authors.php, contact.php, login.php, profile.php */
+/* używa: authors.php, contact.php, login.php, profile.php, settings.php */
 .dark .avatar, .dark .card-header, .dark #chips li{
     border-color: #f4efe3;
 }
