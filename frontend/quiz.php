@@ -85,7 +85,10 @@
                             <label><input type="radio" name="rating" value="4"> 4 ★</label>
                             <label><input type="radio" name="rating" value="5"> 5 ★</label>
                         </div>
-                        <textarea class="field" id="rating-comment" maxlength="1000" placeholder="napisz, co myślisz o tym quizie (nieobowiązkowe)"></textarea>
+                        <label>
+                            komentarz (nieobowiązkowy)
+                            <textarea class="field" id="rating-comment" maxlength="1000" placeholder="napisz, co myślisz o tym quizie"></textarea>
+                        </label>
                         <div id="rating-errors"></div>
                         <div>
                             <button class="button yellow" type="button" id="send-rating" onclick="sendRating()">dodaj ocenę</button>
