@@ -8,14 +8,3 @@ backend/uploads/*
 .idea/
 .DS_Store
 Thumbs.db
-
-# Lokalne instrukcje i konfiguracja
-/AGENTS.md
-/.env
-/.env.*
-!/.env.example
-
-# Zależności i wyniki Playwrighta
-/tests/node_modules/
-/tests/playwright-report/
-/tests/test-results/
