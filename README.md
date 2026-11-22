@@ -13,7 +13,7 @@ Uruchomienie: `docker compose up -d --build`
 
 - Dwa testy integracyjne sprawdzają połączenie API z bazą zawierającą przykładowe quizy oraz odpowiedź JSON po błędzie zapytania SQL.
 - Trzy testy E2E sprawdzają przejście do katalogu i wysłanie filtrów, zachowanie motywu po nawigacji i odświeżeniu oraz powrót ze strony 404.
-- Dwa testy dostępności uruchamiają axe-core dla strony głównej, logowania i kontaktu. Sprawdzają też fokus klawiatury w jasnym motywie na desktopie i ciemnym na telefonie.
+- Osiem testów dostępności uruchamia axe-core na stronie głównej, w formularzach konta i kontaktu, w katalogu i edytorze quizów oraz na stronach o autorach i 404. W jasnym motywie na komputerze i ciemnym na telefonie sprawdzają też tabulację, widoczny fokus oraz minimalny rozmiar 24 × 24 px dla sprawdzanych kontrolek.
 
 GitHub Actions uruchamia zestaw przy pull requestach na świeżej bazie. Testy lokalne nie zapisują danych w bazie.
 
