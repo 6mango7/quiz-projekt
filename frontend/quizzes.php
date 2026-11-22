@@ -8,25 +8,16 @@
                 <h1>wszystkie quizy</h1>
                 <span class="badge" id="counter"></span>
             </div>
-            <form class="quiz-filters" id="filters" method="get" action="quizzes.php">
-                <label class="quiz-filters__search">
-                    szukaj quizu
-                    <input class="field" type="text" name="search" id="search">
-                </label>
-                <label>
-                    kategoria
-                    <select class="field" name="category" id="category">
-                        <option value="0">wszystkie kategorie</option>
-                    </select>
-                </label>
-                <label>
-                    sortowanie
-                    <select class="field" name="sort" id="sort">
-                        <option value="popular">najpopularniejsze</option>
-                        <option value="new">najnowsze</option>
-                        <option value="best">najlepiej oceniane</option>
-                    </select>
-                </label>
+            <form id="filters" method="get" action="quizzes.php">
+                <input class="field" type="text" name="search" id="search" placeholder="szukaj quizu...">
+                <select class="field" name="category" id="category">
+                    <option value="0">wszystkie kategorie</option>
+                </select>
+                <select class="field" name="sort" id="sort">
+                    <option value="popular">najpopularniejsze</option>
+                    <option value="new">najnowsze</option>
+                    <option value="best">najlepiej oceniane</option>
+                </select>
                 <button class="button yellow" type="submit">szukaj</button>
             </form>
             <!-- karty quizów wstawia JavaScript -->
