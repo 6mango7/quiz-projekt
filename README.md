@@ -12,7 +12,7 @@ Uruchomienie: `docker compose up -d --build`
 ## Testy
 
 - Dwa testy integracyjne sprawdzają połączenie API z bazą zawierającą przykładowe quizy oraz odpowiedź JSON po błędzie zapytania SQL.
-- Test E2E przechodzi ze strony głównej do katalogu quizów i wysyła formularz filtrów. Sprawdza parametry w adresie strony.
+- Trzy testy E2E sprawdzają przejście do katalogu i wysłanie filtrów, zachowanie motywu po nawigacji i odświeżeniu oraz powrót ze strony 404.
 - Dwa testy dostępności uruchamiają axe-core dla strony głównej, logowania i kontaktu. Sprawdzają też fokus klawiatury w jasnym motywie na desktopie i ciemnym na telefonie.
 
 GitHub Actions uruchamia zestaw przy pull requestach na świeżej bazie. Testy lokalne nie zapisują danych w bazie.
