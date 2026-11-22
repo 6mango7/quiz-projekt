@@ -469,10 +469,9 @@ footer a:hover{
 }
 
 /* używa: quizzes.php */
-.quiz-filters{
+#filters{
     display: grid;
     grid-template-columns: 2fr 1fr 1fr auto;
-    align-items: end;
     gap: 12px;
     margin-bottom: 26px;
 }
@@ -503,7 +502,7 @@ footer a:hover{
     padding: 26px 28px;
 }
 
-/* używa: quizzes.php, editor.php, contact.php, login.php */
+/* używa: editor.php, contact.php, login.php */
 label{
     display: grid;
     gap: 6px;
@@ -578,7 +577,6 @@ h3{
 #add-option{
     display: grid;
     grid-template-columns: 1fr auto;
-    align-items: end;
     gap: 10px;
 }
 
@@ -1036,12 +1034,12 @@ h3{
     }
 
     /* używa: quizzes.php */
-    .quiz-filters{
+    #filters{
         grid-template-columns: 1fr 1fr;
     }
 
     /* używa: quizzes.php */
-    .quiz-filters__search{
+    #search{
         grid-column: 1 / 3;
     }
 
