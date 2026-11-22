@@ -25,7 +25,10 @@
                     <h3>opcje <span class="badge" id="options-info"></span></h3>
                     <ol id="option-list"></ol>
                     <div id="add-option">
-                        <input class="field" type="text" id="new-option" maxlength="60" placeholder="nazwa nowej opcji, np. margherita">
+                        <label>
+                            nazwa nowej opcji
+                            <input class="field" type="text" id="new-option" maxlength="60" placeholder="np. margherita">
+                        </label>
                         <button class="button" type="button" onclick="addOption()">+ dodaj</button>
                     </div>
                     <p class="muted">Co najmniej 4 opcje, najwyżej 64. Wpisz nazwę opcji i kliknij "+ dodaj".</p>
