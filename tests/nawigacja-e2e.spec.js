@@ -2,25 +2,26 @@ const { test, expect } = require('@playwright/test');
 
 test('motyw przełączony klawiaturą pozostaje aktywny po nawigacji i odświeżeniu', async ({ page }) => {
     await page.goto('/');
-    const dokument = page.locator('html');
+    const tloStrony = page.locator('body');
     const naglowek = page.getByRole('banner');
-    const przelacznik = naglowek.getByRole('button', { name: 'motyw' });
-    const ciemnyMotyw = /\bdark\b/;
+    const przelacznik = naglowek.getByRole('button', { name: 'motyw', exact: true });
+    const jasneTlo = 'rgb(251, 242, 226)';
+    const ciemneTlo = 'rgb(22, 22, 47)';
 
-    await expect(dokument).not.toHaveClass(ciemnyMotyw);
+    await expect(tloStrony).toHaveCSS('background-color', jasneTlo);
     await przelacznik.press('Space');
-    await expect(dokument).toHaveClass(ciemnyMotyw);
+    await expect(tloStrony).toHaveCSS('background-color', ciemneTlo);
 
     await naglowek.getByRole('link', { name: 'kontakt', exact: true }).press('Enter');
     await expect(page.getByRole('heading', { name: 'napisz do nas' })).toBeVisible();
-    await expect(dokument).toHaveClass(ciemnyMotyw);
+    await expect(tloStrony).toHaveCSS('background-color', ciemneTlo);
     await page.reload();
-    await expect(dokument).toHaveClass(ciemnyMotyw);
+    await expect(tloStrony).toHaveCSS('background-color', ciemneTlo);
 
     await przelacznik.press('Space');
-    await expect(dokument).not.toHaveClass(ciemnyMotyw);
+    await expect(tloStrony).toHaveCSS('background-color', jasneTlo);
     await page.reload();
-    await expect(dokument).not.toHaveClass(ciemnyMotyw);
+    await expect(tloStrony).toHaveCSS('background-color', jasneTlo);
 });
 
 test('strona 404 pozwala wrócić na stronę główną klawiaturą', async ({ page }) => {

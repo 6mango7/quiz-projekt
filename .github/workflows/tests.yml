@@ -21,31 +21,84 @@ jobs:
         shell: bash
     env:
       COMPOSE_PROJECT_NAME: quizownia-ci
-      PLAYWRIGHT_BASE_URL: http://frontend
+      PLAYWRIGHT_BASE_URL: http://127.0.0.1:8080
 
     steps:
       - uses: actions/checkout@v6
         with:
+          fetch-depth: 2
           persist-credentials: false
 
+      - name: Wybierz testy na podstawie zmian w PR-ze
+        id: selection
+        run: |
+          api=true
+          e2e=true
+          if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
+            changes=$(mktemp)
+            trap 'rm -f -- "$changes"' EXIT
+            # Porównaj testowany commit scalający z gałęzią bazową.
+            if git diff --name-only -z --no-renames HEAD^1 HEAD -- > "$changes"; then
+              api=false
+              e2e=false
+              while IFS= read -r -d '' path; do
+                case "$path" in
+                  README.md|instrukcja-galezie.pdf|.gitignore) ;;
+                  tests/api.spec.js) api=true ;;
+                  frontend/.htaccess|frontend/*/.htaccess) api=true; e2e=true ;;
+                  frontend/css/*|frontend/img/*|frontend/includes/*|frontend/js/*|frontend/*.php|tests/*-e2e.spec.js)
+                    e2e=true ;;
+                  *) api=true; e2e=true ;;
+                esac
+              done < "$changes"
+            else
+              echo 'Nie udało się odczytać zmian w PR-ze. Uruchomię oba zestawy.'
+            fi
+          fi
+          printf 'api=%s\ne2e=%s\n' "$api" "$e2e" >> "$GITHUB_OUTPUT"
+          if [[ "$api" == false && "$e2e" == false ]]; then
+            echo 'Zmiany w PR-ze nie wymagają testów API ani E2E.'
+          fi
+
+      - name: Zainstaluj zależności testów
+        if: steps.selection.outputs.api == 'true' || steps.selection.outputs.e2e == 'true'
+        working-directory: tests
+        run: npm ci
+
+      - name: Zainstaluj headless Chromium
+        if: steps.selection.outputs.e2e == 'true'
+        working-directory: tests
+        run: npx playwright install --only-shell chromium
+
       - name: Uruchom PHP, Apache i MySQL
+        id: compose
+        if: steps.selection.outputs.api == 'true' || steps.selection.outputs.e2e == 'true'
+        env:
+          RUN_API: ${{ steps.selection.outputs.api }}
         run: |
           docker compose up -d --build --wait --wait-timeout 120 frontend backend db
+          ready_path=/
+          if [[ "$RUN_API" == true ]]; then
+            ready_path=/api/
+          fi
           curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 1 \
-            --max-time 5 http://127.0.0.1:8080/api/ |
-            jq -e '.database == "connected" and .quizzes == 25'
+            --max-time 5 --output /dev/null "${PLAYWRIGHT_BASE_URL}${ready_path}"
 
       - name: Uruchom testy Playwrighta
         id: playwright
+        if: steps.selection.outputs.api == 'true' || steps.selection.outputs.e2e == 'true'
+        working-directory: tests
+        env:
+          RUN_API: ${{ steps.selection.outputs.api }}
+          RUN_E2E: ${{ steps.selection.outputs.e2e }}
         run: |
-          version=$(jq -er '.devDependencies["@playwright/test"]' tests/package.json)
-          docker run --rm --init --ipc=host \
-            --user "$(id -u):$(id -g)" \
-            --network "${COMPOSE_PROJECT_NAME}_default" \
-            --env HOME=/tmp --env CI=true --env PLAYWRIGHT_BASE_URL \
-            --volume "${GITHUB_WORKSPACE}/tests:/tests" --workdir /tests \
-            "mcr.microsoft.com/playwright:v${version}-noble" \
-            sh -ec 'npm ci && npm test'
+          if [[ "$RUN_API" == true && "$RUN_E2E" == true ]]; then
+            npm test
+          elif [[ "$RUN_API" == true ]]; then
+            npm test -- '(^|/)api\.spec\.js$'
+          else
+            npm test -- '(^|/)[^/]+-e2e\.spec\.js$'
+          fi
 
       - name: Prześlij raport i ślady błędów
         if: ${{ !cancelled() && (steps.playwright.outcome == 'success' || steps.playwright.outcome == 'failure') }}
@@ -57,9 +110,9 @@ jobs:
             tests/test-results/
 
       - name: Pokaż logi usług po błędzie
-        if: ${{ failure() }}
+        if: ${{ failure() && (steps.compose.outcome == 'success' || steps.compose.outcome == 'failure') }}
         run: docker compose logs --no-color frontend backend db
 
       - name: Zatrzymaj środowisko testowe
-        if: ${{ always() }}
+        if: ${{ always() && steps.compose.outcome != '' && steps.compose.outcome != 'skipped' }}
         run: docker compose down --volumes

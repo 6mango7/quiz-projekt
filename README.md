@@ -11,10 +11,10 @@ Uruchomienie: `docker compose up -d --build`
 
 ## Testy
 
-- Test integracyjny sprawdza połączenie API z bazą zawierającą przykładowe quizy.
+- Test integracyjny sprawdza, czy API ma połączenie z bazą i zwraca liczbę quizów większą niż 1.
 - Trzy testy E2E sprawdzają przejście do katalogu i wysłanie filtrów, zachowanie motywu po nawigacji i odświeżeniu oraz powrót ze strony 404.
 
-GitHub Actions uruchamia zestaw przy pull requestach na świeżej bazie. Testy lokalne nie zapisują danych w bazie.
+GitHub Actions wybiera testy na podstawie plików zmienionych w pull requeście.
 
 Do uruchomienia lokalnie potrzebujesz Node.js 20 lub nowszego i aplikacji uruchomionej przez Docker Compose. Zacznij w katalogu repozytorium.
 
