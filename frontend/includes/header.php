@@ -6,7 +6,18 @@
     <!-- adresy plików liczone od głównego folderu (ważne dla strony 404) -->
     <base href="/">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- style podzielone na części, kolejność jest ważna: dark i responsive muszą być na końcu -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/quiz-list.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/dark.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="icon" href="img/icon.svg">
     <script src="js/theme.js"></script>
     <title><?php echo $title; ?> - quizownia</title>

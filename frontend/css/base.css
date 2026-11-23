@@ -1,0 +1,169 @@
+/* ogólne */
+/* używa: wszystkie strony */
+*{
+    box-sizing: border-box;
+}
+
+/* używa: wszystkie strony */
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 38px;
+    max-width: 1140px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 22px 24px;
+    background-color: #fbf2e2;
+    color: #171717;
+    font-family: Archivo, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* używa: wszystkie strony */
+main{
+    display: grid;
+    align-content: start;
+    gap: 50px;
+}
+
+/* używa: wszystkie strony */
+h1, h2, h3, p{
+    margin: 0;
+}
+
+/* używa: wszystkie strony */
+h1, h2{
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* używa: wszystkie strony */
+a{
+    color: inherit;
+}
+
+/* używa: wszystkie strony */
+img{
+    vertical-align: middle;
+}
+
+/* używa: wszystkie strony */
+input, select, textarea, button{
+    font-family: Archivo, Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* używa: wszystkie strony */
+.card{
+    border: 3px solid #171717;
+    border-radius: 18px;
+    background-color: #fffdf8;
+    box-shadow: 6px 6px 0 #171717;
+}
+
+/* używa: wszystkie strony */
+.button{
+    display: inline-block;
+    padding: 9px 18px;
+    border: 3px solid #171717;
+    border-radius: 12px;
+    background-color: #fffdf8;
+    color: #171717;
+    font-weight: 900;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 #171717;
+    cursor: pointer;
+}
+
+/* używa: wszystkie strony */
+.button:hover{
+    transform: translate(-2px, -2px);
+}
+
+/* używa: index.php, quizzes.php, editor.php, play.php */
+.badge{
+    display: inline-block;
+    padding: 1px 8px;
+    border: 2px solid #171717;
+    border-radius: 8px;
+    background-color: #fbf2e2;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+/* używa: index.php, authors.php, login.php, 404.php, quiz.php, play.php */
+.sticker{
+    display: inline-block;
+    padding: 3px 12px;
+    border: 3px solid #171717;
+    border-radius: 9px;
+    background-color: #ffd23f;
+    color: #171717;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 #171717;
+    transform: rotate(-3deg);
+}
+
+/* używa: quizzes.php, editor.php, contact.php, login.php, settings.php, quiz.php */
+.field{
+    width: 100%;
+    padding: 10px 14px;
+    border: 3px solid #171717;
+    border-radius: 12px;
+    background-color: #fffdf8;
+    color: #171717;
+}
+
+/* używa: editor.php, contact.php, settings.php, quiz.php */
+textarea{
+    height: 100px;
+    resize: vertical;
+}
+
+/* używa: index.php, quizzes.php, quiz.php */
+.empty{
+    grid-column: 1 / -1;
+    padding: 26px;
+    border: 3px dashed #171717;
+    border-radius: 16px;
+    font-weight: bold;
+    text-align: center;
+    list-style: none;
+}
+
+/* używa: quizzes.php, editor.php, profile.php, quiz.php, play.php */
+.loading{
+    grid-column: 1 / -1;
+    font-weight: bold;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+/* używa: editor.php, contact.php, login.php, profile.php, settings.php, quiz.php, play.php */
+.muted{
+    color: #625a4e;
+}
+
+/* używa: index.php, quizzes.php, profile.php, quiz.php */
+.section-top{
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    justify-items: start;
+    gap: 10px 16px;
+    margin-bottom: 18px;
+}
+
+/* używa: index.php, quizzes.php, profile.php, quiz.php */
+.section-top .button{
+    justify-self: end;
+}

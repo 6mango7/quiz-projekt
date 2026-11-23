@@ -1,0 +1,93 @@
+/* nagłówek i stopka */
+/* używa: wszystkie strony */
+header{
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: "logo menu theme login";
+    align-items: center;
+    gap: 10px 14px;
+    padding: 10px 14px;
+}
+
+/* używa: wszystkie strony */
+#logo{
+    grid-area: logo;
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* używa: wszystkie strony */
+#logo img{
+    width: 40px;
+}
+
+/* używa: wszystkie strony */
+#menu{
+    grid-area: menu;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 4px;
+    overflow-x: auto;
+}
+
+/* używa: wszystkie strony */
+#menu a{
+    padding: 7px 12px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* używa: wszystkie strony */
+#menu a:hover{
+    border-color: #171717;
+}
+
+/* używa: wszystkie strony */
+#menu .active{
+    background-color: #171717;
+    color: #fffdf8;
+}
+
+/* używa: wszystkie strony */
+#theme-button{
+    grid-area: theme;
+}
+
+/* używa: wszystkie strony */
+#login-button{
+    grid-area: login;
+}
+
+/* używa: wszystkie strony */
+footer{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px 24px;
+    font-size: 14px;
+}
+
+/* używa: wszystkie strony */
+footer nav{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 18px;
+}
+
+/* używa: wszystkie strony */
+footer a{
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* używa: wszystkie strony */
+footer a:hover{
+    text-decoration: underline;
+}

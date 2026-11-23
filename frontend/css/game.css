@@ -1,0 +1,178 @@
+/* gra */
+/* używa: play.php */
+#game{
+    display: grid;
+    gap: 18px;
+}
+
+/* używa: play.php */
+#game-top{
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+}
+
+/* używa: play.php */
+#game-title{
+    overflow-wrap: anywhere;
+}
+
+/* używa: play.php */
+#progress{
+    width: 0%;
+}
+
+/* używa: play.php */
+#board{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+/* kafelek z opcją do wyboru */
+/* używa: play.php */
+.tile{
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    min-height: 280px;
+    padding: 26px 18px;
+    border: 3px solid #171717;
+    border-radius: 20px;
+    background-color: #fffdf8;
+    color: #171717;
+    font-family: Archivo, Arial, sans-serif;
+    box-shadow: 6px 6px 0 #171717;
+    cursor: pointer;
+}
+
+/* używa: play.php */
+.tile:hover{
+    transform: translate(-2px, -2px);
+}
+
+/* wybrana opcja (klasę dodaje JavaScript) */
+/* używa: play.php (wstawia JavaScript) */
+.tile.chosen{
+    background-color: #ffd23f;
+}
+
+/* odrzucona opcja (klasę dodaje JavaScript) */
+/* używa: play.php (wstawia JavaScript) */
+.tile.rejected{
+    opacity: 0.4;
+}
+
+/* duży obrazek opcji na kafelku */
+/* używa: play.php (wstawia JavaScript) */
+.tile .image{
+    width: 160px;
+    height: 160px;
+    border-radius: 18px;
+}
+
+/* używa: play.php (wstawia JavaScript) */
+.tile .letters{
+    font-size: 60px;
+    line-height: 156px;
+}
+
+/* używa: play.php */
+.tile-name{
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+/* używa: play.php */
+#hint{
+    text-align: center;
+}
+
+/* używa: play.php */
+kbd{
+    padding: 1px 6px;
+    border: 2px solid #171717;
+    border-radius: 6px;
+    font-family: Archivo, Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* używa: play.php */
+#game-summary{
+    display: none;
+}
+
+/* używa: play.php */
+#result{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: start;
+    gap: 28px;
+}
+
+/* używa: play.php */
+#champion-card{
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    padding: 26px;
+    text-align: center;
+}
+
+/* używa: play.php (wstawia JavaScript) */
+#champion-image .image{
+    width: 180px;
+    height: 180px;
+    border-radius: 18px;
+}
+
+/* używa: play.php (wstawia JavaScript) */
+#champion-image .letters{
+    font-size: 66px;
+    line-height: 176px;
+}
+
+/* używa: play.php */
+#champion-name{
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+/* używa: play.php */
+#result-right{
+    display: grid;
+    gap: 16px;
+}
+
+/* używa: play.php */
+#path{
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* pokonany przeciwnik mistrza (wstawia JavaScript) */
+/* używa: play.php */
+#path li{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border: 2px dashed #171717;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* używa: play.php */
+#result-buttons .button{
+    margin: 0 10px 10px 0;
+}

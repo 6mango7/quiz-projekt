@@ -1,0 +1,239 @@
+/* tablet i telefon */
+@media (max-width: 860px){
+    /* używa: wszystkie strony */
+    body{
+        gap: 26px;
+        padding: 14px 16px;
+    }
+
+    /* używa: wszystkie strony */
+    header{
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas:
+            "logo theme login"
+            "menu menu menu";
+    }
+
+    /* używa: wszystkie strony */
+    footer{
+        grid-template-columns: 1fr;
+    }
+
+    /* używa: index.php, quizzes.php, profile.php, quiz.php */
+    .section-top{
+        grid-template-columns: auto 1fr;
+    }
+
+    /* używa: index.php, quizzes.php, profile.php, quiz.php */
+    .section-top .button{
+        grid-column: 1 / 3;
+        justify-self: start;
+    }
+
+    /* używa: index.php */
+    #hero{
+        grid-template-columns: 1fr;
+        padding: 24px;
+    }
+
+    /* używa: index.php */
+    #hero h1{
+        font-size: 38px;
+    }
+
+    /* używa: index.php */
+    .hero-tile{
+        padding: 12px;
+    }
+
+    /* używa: index.php */
+    .hero-tile img{
+        width: 60px;
+        height: 60px;
+    }
+
+    /* używa: quizzes.php */
+    #filters{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* używa: quizzes.php */
+    #search-box{
+        grid-column: 1 / 3;
+    }
+
+    /* używa: editor.php */
+    #editor{
+        padding: 20px 16px;
+    }
+
+    /* używa: editor.php (wstawia JavaScript) */
+    .option-row{
+        grid-template-columns: 26px 40px 1fr 34px;
+    }
+
+    /* używa: editor.php (wstawia JavaScript) */
+    .option-buttons{
+        grid-row: 2;
+        grid-column: 1 / 5;
+        justify-self: start;
+    }
+
+    /* używa: editor.php */
+    #emoji-window{
+        top: 70px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+    }
+
+    /* używa: authors.php */
+    #about{
+        padding: 24px;
+    }
+
+    /* używa: authors.php */
+    #about h1{
+        font-size: 38px;
+    }
+
+    /* używa: 404.php */
+    #not-found{
+        margin: 10px auto;
+        padding: 24px;
+    }
+
+    /* używa: 404.php */
+    #big-number{
+        font-size: 72px;
+    }
+
+    /* używa: contact.php, login.php */
+    #contact-columns, #forms{
+        grid-template-columns: 1fr;
+    }
+
+    /* używa: profile.php */
+    #profile-head{
+        grid-template-columns: auto 1fr;
+    }
+
+    /* używa: profile.php */
+    #settings-link{
+        grid-column: 1 / 3;
+        justify-self: start;
+    }
+
+    /* używa: quiz.php */
+    #quiz-columns, #ratings-columns{
+        grid-template-columns: 1fr;
+    }
+
+    /* używa: quiz.php */
+    #quiz-board h1{
+        font-size: 38px;
+    }
+
+    /* na telefonie bez kolumny "wygrane pojedynki" */
+    /* używa: quiz.php */
+    .win-rate{
+        display: none;
+    }
+
+    /* używa: quiz.php */
+    #sizes, #stars{
+        grid-auto-flow: row;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        justify-content: stretch;
+    }
+
+    /* używa: play.php */
+    #game-top{
+        grid-template-columns: auto 1fr auto;
+    }
+
+    /* tytuł quizu w osobnym wierszu pod rundą */
+    /* używa: play.php */
+    #game-title{
+        grid-row: 2;
+        grid-column: 1 / 4;
+    }
+
+    /* licznik zostaje w pierwszym wierszu po prawej */
+    /* używa: play.php */
+    #game-top #counter{
+        grid-row: 1;
+        grid-column: 3;
+    }
+
+    /* używa: play.php */
+    #board{
+        gap: 10px;
+    }
+
+    /* używa: play.php */
+    .tile{
+        min-height: 200px;
+        padding: 16px 10px;
+    }
+
+    /* używa: play.php (wstawia JavaScript) */
+    .tile .image{
+        width: 90px;
+        height: 90px;
+    }
+
+    /* używa: play.php (wstawia JavaScript) */
+    .tile .letters{
+        font-size: 34px;
+        line-height: 86px;
+    }
+
+    /* używa: play.php */
+    .tile-name{
+        font-size: 16px;
+    }
+
+    /* na telefonie bez podpowiedzi o strzałkach */
+    /* używa: play.php */
+    #hint{
+        display: none;
+    }
+
+    /* używa: play.php */
+    #result{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* telefon */
+@media (max-width: 480px){
+    /* używa: wszystkie strony */
+    header{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "logo logo"
+            "theme login"
+            "menu menu";
+    }
+
+    /* używa: wszystkie strony */
+    header .button{
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    /* używa: quiz.php */
+    #quiz-board h1{
+        font-size: 32px;
+    }
+
+    /* na wąskim telefonie mniejsze kółko "czy?" na planszy gry */
+    /* używa: index.php, play.php */
+    #or-sign{
+        width: 54px;
+        height: 54px;
+        font-size: 16px;
+        line-height: 48px;
+    }
+}
