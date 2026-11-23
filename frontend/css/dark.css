@@ -1,0 +1,126 @@
+/* ciemny motyw (klasa dark na <html>, ustawia ją js/theme.js) */
+/* używa: wszystkie strony */
+.dark body{
+    background-color: #16162f;
+    color: #f4efe3;
+}
+
+/* używa: wszystkie strony */
+.dark .card, .dark .button, .dark .field, .dark .hero-tile, .dark .mini-or, .dark .letters, .dark .missing{
+    background-color: #22224a;
+    color: #f4efe3;
+}
+
+/* używa: index.php, quizzes.php, editor.php, play.php */
+.dark .badge{
+    background-color: #16162f;
+}
+
+/* używa: wszystkie strony */
+.dark .card, .dark .button, .dark .field, .dark .badge, .dark .sticker, .dark .hero-tile, .dark #or-sign,
+.dark .empty, .dark .card-top, .dark .mini-or, .dark .letters, .dark .missing, .dark .option-row,
+.dark #errors, .dark #login-errors, .dark #register-errors,
+.dark #profile-errors, .dark #password-errors, .dark #delete-errors, .dark #rating-errors, .dark #delete-zone, .dark #menu a:hover, .dark #emoji-list button:hover{
+    border-color: #f4efe3;
+}
+
+/* używa: wszystkie strony */
+.dark .card{
+    box-shadow: 6px 6px 0 #f4efe3;
+}
+
+/* używa: wszystkie strony */
+.dark .button, .dark .sticker, .dark .hero-tile, .dark #or-sign{
+    box-shadow: 4px 4px 0 #f4efe3;
+}
+
+/* używa: wszystkie strony */
+.dark #menu .active{
+    background-color: #f4efe3;
+    color: #22224a;
+}
+
+/* używa: index.php, quizzes.php, editor.php, contact.php, login.php, profile.php, settings.php, quiz.php, play.php (wstawia JavaScript) */
+.dark .muted, .dark .card-category{
+    color: #b7b2cc;
+}
+
+/* używa: wszystkie strony */
+.dark .yellow{
+    background-color: #ffd23f;
+    color: #171717;
+}
+
+/* używa: editor.php, 404.php, settings.php */
+.dark .red{
+    background-color: #ff5c4d;
+    color: #171717;
+}
+
+/* używa: login.php */
+.dark .blue{
+    background-color: #5b93ff;
+    color: #171717;
+}
+
+/* używa: authors.php, contact.php, login.php, profile.php, settings.php */
+.dark .avatar, .dark .card-header, .dark #chips li{
+    border-color: #f4efe3;
+}
+
+/* używa: authors.php, profile.php */
+.dark .avatar{
+    box-shadow: 4px 4px 0 #f4efe3;
+}
+
+/* używa: authors.php */
+.dark #chips li{
+    background-color: #22224a;
+}
+
+/* używa: profile.php, quiz.php, play.php */
+.dark .stat, .dark #last-ratings li, .dark #comments li{
+    border-color: #f4efe3;
+    background-color: #22224a;
+}
+
+/* używa: profile.php, quiz.php */
+.dark #last-ratings .loading, .dark #last-ratings .empty,
+.dark #comments .loading, .dark #comments .empty{
+    background-color: transparent;
+}
+
+/* używa: profile.php, quiz.php, play.php */
+.dark .stat-label, .dark #ranking th{
+    color: #b7b2cc;
+}
+
+/* używa: quiz.php, play.php */
+.dark #sizes label, .dark #stars label, .dark .bar{
+    border-color: #f4efe3;
+    background-color: #22224a;
+}
+
+/* używa: quiz.php */
+.dark #play-panel, .dark #ranking td, .dark .number{
+    border-color: #f4efe3;
+}
+
+/* używa: play.php */
+.dark .tile{
+    border-color: #f4efe3;
+    background-color: #22224a;
+    color: #f4efe3;
+    box-shadow: 6px 6px 0 #f4efe3;
+}
+
+/* używa: play.php (wstawia JavaScript) */
+.dark .tile.chosen{
+    background-color: #ffd23f;
+    color: #171717;
+}
+
+/* używa: play.php */
+.dark kbd, .dark #path li{
+    border-color: #f4efe3;
+}

@@ -1,0 +1,90 @@
+/* strona główna */
+/* używa: index.php */
+#hero{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 34px 36px;
+    background-color: #5b93ff;
+    color: #171717;
+}
+
+/* używa: index.php */
+#hero h1{
+    margin: 18px 0;
+    font-size: 54px;
+}
+
+/* używa: index.php */
+#hero p{
+    margin-bottom: 22px;
+    font-size: 18px;
+}
+
+/* używa: index.php */
+#hero .button{
+    margin: 0 10px 10px 0;
+}
+
+/* używa: index.php, editor.php */
+#hero .button, #save{
+    padding: 12px 28px;
+    font-size: 22px;
+    line-height: 28px;
+}
+
+/* używa: index.php */
+#hero-board{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+/* używa: index.php */
+.hero-tile{
+    padding: 18px;
+    border: 3px solid #171717;
+    border-radius: 20px;
+    background-color: #fffdf8;
+    box-shadow: 4px 4px 0 #171717;
+    animation: bounce 3s infinite;
+}
+
+/* używa: index.php */
+.hero-tile img{
+    width: 100px;
+    height: 100px;
+}
+
+/* używa: index.php, play.php */
+#or-sign{
+    width: 74px;
+    height: 74px;
+    border: 3px solid #171717;
+    border-radius: 50%;
+    background-color: #ff5c4d;
+    color: #171717;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 68px;
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 #171717;
+    transform: rotate(-10deg);
+}
+
+/* używa: index.php */
+@keyframes bounce{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-12px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}

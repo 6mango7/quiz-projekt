@@ -1,0 +1,217 @@
+/* strona quizu */
+/* używa: quiz.php */
+#quiz-columns{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+    gap: 28px;
+    margin-top: 14px;
+}
+
+/* używa: quiz.php */
+#quiz-board{
+    display: grid;
+    justify-items: start;
+    gap: 14px;
+    padding: 26px 28px;
+}
+
+/* używa: quiz.php */
+#quiz-board h1{
+    font-size: 50px;
+    overflow-wrap: anywhere;
+}
+
+/* używa: quiz.php */
+#quiz-description{
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+/* używa: quiz.php */
+#play-panel{
+    display: none;
+    gap: 14px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 16px 18px;
+    border: 3px dashed #171717;
+    border-radius: 16px;
+}
+
+/* używa: quiz.php */
+#play-panel .button{
+    justify-self: start;
+}
+
+/* używa: quiz.php */
+#too-few{
+    display: none;
+}
+
+/* przyciski wyboru: rozmiar turnieju i gwiazdki */
+/* używa: quiz.php */
+#sizes, #stars{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 8px;
+}
+
+/* używa: quiz.php */
+#sizes label, #stars label{
+    display: block;
+    padding: 6px 12px;
+    border: 2px solid #171717;
+    border-radius: 10px;
+    background-color: #fffdf8;
+    cursor: pointer;
+}
+
+/* używa: quiz.php */
+#quiz-stats{
+    display: grid;
+    gap: 16px;
+    padding: 22px;
+}
+
+/* używa: quiz.php */
+#ranking-card, #ratings{
+    padding: 22px 24px;
+}
+
+/* używa: quiz.php */
+#ranking{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* używa: quiz.php */
+#ranking th{
+    padding: 6px 8px;
+    color: #625a4e;
+    font-size: 12px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+/* wiersz rankingu (wstawia JavaScript) */
+/* używa: quiz.php */
+#ranking td{
+    padding: 6px 8px;
+    border-top: 2px dashed #171717;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* używa: quiz.php */
+.win-rate{
+    white-space: nowrap;
+}
+
+/* numer miejsca w rankingu */
+/* używa: quiz.php (wstawia JavaScript) */
+.number{
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #171717;
+    border-radius: 9px;
+    font-weight: 900;
+}
+
+/* pasek z procentem (ranking i rozkład ocen) */
+/* używa: quiz.php, play.php (wstawia JavaScript) */
+.bar{
+    display: block;
+    height: 16px;
+    overflow: hidden;
+    border: 2px solid #171717;
+    border-radius: 10px;
+    background-color: #fffdf8;
+}
+
+/* używa: quiz.php, play.php (wstawia JavaScript) */
+.bar-fill{
+    display: block;
+    height: 100%;
+    background-color: #3ac57e;
+}
+
+/* używa: quiz.php (wstawia JavaScript) */
+#ranking .bar{
+    display: inline-block;
+    width: 140px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* używa: quiz.php */
+#full-ranking-box{
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* używa: quiz.php */
+#full-ranking{
+    display: none;
+}
+
+/* używa: quiz.php */
+#ratings-columns{
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    margin-top: 18px;
+}
+
+/* używa: quiz.php */
+#average-box{
+    font-size: 26px;
+    font-weight: 900;
+}
+
+/* używa: quiz.php */
+#big-average{
+    font-size: 76px;
+    line-height: 1;
+}
+
+/* używa: quiz.php */
+#distribution{
+    display: grid;
+    gap: 6px;
+    margin: 18px 0 0;
+    padding: 0;
+    font-weight: bold;
+    list-style: none;
+}
+
+/* używa: quiz.php (wstawia JavaScript) */
+#distribution li{
+    display: grid;
+    grid-template-columns: 34px 1fr 26px;
+    align-items: center;
+    gap: 10px;
+}
+
+/* używa: quiz.php (wstawia JavaScript) */
+#distribution .bar-fill{
+    background-color: #ffd23f;
+}
+
+/* używa: quiz.php */
+#rating-info, #rating-form, #delete-rating{
+    display: none;
+}
+
+/* używa: quiz.php */
+#rating-form{
+    gap: 14px;
+}
+
+/* używa: quiz.php */
+#send-rating{
+    margin-right: 10px;
+}

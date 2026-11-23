@@ -1,0 +1,135 @@
+/* lista quizów (karty wstawia JavaScript) */
+/* używa: index.php, quizzes.php, profile.php */
+.quiz-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.quiz-card{
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.quiz-card:hover{
+    transform: translate(-3px, -3px);
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-top{
+    display: block;
+    padding: 20px 14px;
+    border-bottom: 3px solid #171717;
+    background-color: #ffd23f;
+    text-align: center;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-top .image{
+    width: 76px;
+    height: 76px;
+    font-size: 24px;
+    line-height: 72px;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.mini-or{
+    display: inline-block;
+    margin: 0 8px;
+    padding: 1px 8px;
+    border: 2px solid #171717;
+    border-radius: 20px;
+    background-color: #fffdf8;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-body{
+    display: block;
+    padding: 14px 16px;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-category{
+    display: block;
+    color: #625a4e;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-title{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-bottom{
+    display: block;
+    margin-top: 8px;
+}
+
+/* używa: index.php, quizzes.php, editor.php, quiz.php, play.php (wstawia JavaScript) */
+.image{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* używa: index.php, quizzes.php, quiz.php, play.php (wstawia JavaScript) */
+.photo{
+    border: 2px solid #171717;
+}
+
+/* używa: index.php, quizzes.php, editor.php, quiz.php, play.php (wstawia JavaScript) */
+.letters, .missing{
+    display: inline-block;
+    border: 2px solid #171717;
+    background-color: #fffdf8;
+    font-weight: 900;
+    line-height: 36px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* używa: editor.php (wstawia JavaScript) */
+.missing{
+    border-style: dashed;
+    color: #625a4e;
+}
+
+/* używa: quizzes.php */
+#filters{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: end;
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+/* używa: quizzes.php */
+#empty{
+    display: none;
+}
+
+/* używa: quizzes.php */
+#load-more{
+    display: none;
+    margin-top: 30px;
+    text-align: center;
+}

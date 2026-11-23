@@ -1,0 +1,35 @@
+/* kolory */
+/* używa: wszystkie strony */
+.yellow{
+    background-color: #ffd23f;
+    color: #171717;
+}
+
+/* używa: editor.php, 404.php, settings.php */
+.red{
+    background-color: #ff5c4d;
+    color: #171717;
+}
+
+/* używa: login.php */
+.blue{
+    background-color: #5b93ff;
+    color: #171717;
+}
+
+/* używa: authors.php, login.php, profile.php, settings.php */
+.color-1{ background-color: #ffd23f; }
+/* używa: authors.php, login.php, settings.php */
+.color-2{ background-color: #5b93ff; }
+/* używa: settings.php */
+.color-3{ background-color: #ff5c4d; }
+/* używa: authors.php, login.php, contact.php, settings.php */
+.color-4{ background-color: #3ac57e; }
+/* używa: contact.php */
+.color-5{ background-color: #ff8cc6; }
+/* używa: na razie żadna */
+.color-6{ background-color: #ff9f1c; }
+/* używa: authors.php */
+.color-7{ background-color: #a483ff; }
+/* używa: na razie żadna */
+.color-8{ background-color: #2ec4b6; }
