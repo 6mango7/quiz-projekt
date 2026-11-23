@@ -83,6 +83,12 @@
     margin-top: 8px;
 }
 
+/* odstęp między plakietkami (JavaScript nie wstawia spacji między nimi) */
+/* używa: index.php, quizzes.php (wstawia JavaScript) */
+.card-bottom .badge{
+    margin: 0 6px 6px 0;
+}
+
 /* używa: index.php, quizzes.php, editor.php, quiz.php, play.php (wstawia JavaScript) */
 .image{
     width: 40px;
