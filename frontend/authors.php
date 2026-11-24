@@ -15,13 +15,13 @@
             <h2>autorzy</h2>
             <ul id="authors">
                 <li class="card author">
-                    <span class="avatar color-1">I</span>
+                    <span class="avatar color-1">S</span>
                     <h3>Szymon Maniak</h3>
                     <span class="sticker color-1">frontend</span>
                     <p>Wygląd strony, HTML, CSS i JavaScript: plansza, gra, edytor quizów, motyw jasny i ciemny.</p>
                 </li>
                 <li class="card author">
-                    <span class="avatar color-2">I</span>
+                    <span class="avatar color-2">A</span>
                     <h3>Adam Strużyk</h3>
                     <span class="sticker color-2">backend</span>
                     <p>API w PHP: logowanie, zapisywanie quizów, wyniki turniejów, oceny i komentarze.</p>
