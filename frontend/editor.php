@@ -27,11 +27,11 @@
                     <div id="add-option">
                         <label>
                             nazwa nowej opcji
-                            <input class="field" type="text" id="new-option" maxlength="60" placeholder="np. margherita">
+                            <input class="field" type="text" id="new-option" maxlength="60" placeholder="np. margherita" onkeydown="newOptionKey(event)">
                         </label>
                         <button class="button" type="button" onclick="addOption()">+ dodaj</button>
                     </div>
-                    <p class="muted">Co najmniej 4 opcje, najwyżej 64. Wpisz nazwę opcji i kliknij "+ dodaj".</p>
+                    <p class="muted">Co najmniej 4 opcje, najwyżej 64. Wpisz nazwę opcji i kliknij "+ dodaj" albo naciśnij Enter.</p>
                 </div>
                 <div id="errors"></div>
                 <div id="editor-buttons">

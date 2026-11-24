@@ -189,10 +189,29 @@ function chooseEmoji(code){
     drawOptions();
 }
 
-// zamyka okno z emoji, wywołuje ją przycisk "zamknij"
+// zamyka okno z emoji, wywołuje ją przycisk "zamknij" i klawisz Escape
 function closeEmoji(){
     document.getElementById("emoji-window").style.display = "none";
 }
+
+// Enter w polu "nazwa nowej opcji" działa tak samo jak przycisk "+ dodaj"
+// wywołuje ją pole new-option (onkeydown w editor.php)
+function newOptionKey(event){
+    if(event.key == "Enter"){
+        // bez tego Enter mógłby wysłać cały formularz
+        event.preventDefault();
+        addOption();
+    }
+}
+
+// Escape zamyka okno z emoji (jeśli jest otwarte)
+function pressEscape(event){
+    if(event.key == "Escape"){
+        closeEmoji();
+    }
+}
+
+document.onkeydown = pressEscape;
 
 // pokazuje czerwone pole z błędami, wywołuje ją saveQuiz()
 // errors to tablica napisów, np. ["Podaj tytuł.", "Wybierz kategorię."]
