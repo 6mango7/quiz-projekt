@@ -6,6 +6,7 @@
 // wpisuje jego opcje do tablicy options i wywołuje:
 // drawQuiz(quiz), drawStats(stats), drawSizes(sizes), drawRanking(false),
 // drawRatings(ratings) i showRatingForm(state, myRating)
+// gdy quizu nie ma w bazie: showPageError("404", "Nie ma takiego quizu.", "quizzes.php", "wróć do quizów")
 function loadQuiz(){
 }
 

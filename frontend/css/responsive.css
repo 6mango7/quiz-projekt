@@ -97,13 +97,13 @@
         font-size: 38px;
     }
 
-    /* używa: 404.php */
+    /* używa: 404.php, a przez showPageError() z common.js: quiz.php, play.php, profile.php, editor.php */
     #not-found{
         margin: 10px auto;
         padding: 24px;
     }
 
-    /* używa: 404.php */
+    /* używa: 404.php, a przez showPageError() z common.js: quiz.php, play.php, profile.php, editor.php */
     #big-number{
         font-size: 72px;
     }

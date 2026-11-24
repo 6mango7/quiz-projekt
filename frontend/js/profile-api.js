@@ -6,6 +6,7 @@
 // a jeśli nie ma, profil zalogowanego (niezalogowanego odsyła na login.php);
 // dane przekazuje do drawProfile(user), drawStats(stats), drawQuizzes(quizzes)
 // i drawRatings(ratings), a na własnym profilu wywołuje też showOwnerButtons()
+// gdy użytkownika nie ma: showPageError("404", "Nie ma takiego użytkownika.", "index.php", "strona główna")
 function loadProfile(){
 }
 

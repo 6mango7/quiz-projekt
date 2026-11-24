@@ -1,5 +1,6 @@
 // Edytor quizu - WYGLĄD (rysowanie, okno emoji, lista opcji).
 // Komunikacja z bazą jest w pliku editor-api.js.
+// Odmianę słów (plural) i komunikat błędu strony (showPageError) robią funkcje z pliku common.js.
 
 // lista opcji quizu, korzysta z niej też saveQuiz() w editor-api.js
 // jedna opcja wygląda tak:
@@ -219,20 +220,6 @@ function showErrors(errors){
 // zapisuje nową nazwę opcji, gdy ktoś ją poprawi w polu na liście
 function changeName(number, value){
     options[number].name = value;
-}
-
-// zwraca słowo w dobrej formie, np. 1 opcja, 3 opcje, 5 opcji, 22 opcje, 12 opcji
-function plural(number, one, few, many){
-    if(number == 1){
-        return one;
-    }
-
-    let lastDigit = number % 10;
-    let lastTwoDigits = number % 100;
-    if(lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 12 || lastTwoDigits > 14)){
-        return few;
-    }
-    return many;
 }
 
 // tworzy przycisk z tekstem i funkcją do wywołania po kliknięciu

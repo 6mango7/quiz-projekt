@@ -1,5 +1,5 @@
 // Wspólne funkcje wyglądu, z których korzysta kilka stron
-// (lista quizów, profil, a później strona główna i strona quizu).
+// (strona główna, lista quizów, strona quizu, gra, profil, edytor).
 // Plik trzeba dołączyć PRZED plikiem JS danej strony.
 //
 // Jeden quiz z API (do kart) wygląda tak - nazwy pól ustalić z backendem:
@@ -16,6 +16,45 @@
 //         { name: "pierogi", image: null }
 //     ]
 // }
+
+// zamienia całą treść strony na duży komunikat w stylu strony 404,
+// np. gdy w adresie jest quiz albo użytkownik, którego nie ma w bazie
+// number - duży napis, np. "404"; text - wyjaśnienie;
+// address i linkText - przycisk powrotu, np. "quizzes.php" i "wróć do quizów"
+// przykład: showPageError("404", "Nie ma takiego quizu.", "quizzes.php", "wróć do quizów");
+function showPageError(number, text, address, linkText){
+    document.title = "nie ma takiej strony - quizownia";
+
+    let card = document.createElement("section");
+    card.className = "card";
+    card.id = "not-found";
+
+    let sticker = document.createElement("span");
+    sticker.className = "sticker red";
+    sticker.textContent = "ups";
+
+    let big = document.createElement("h1");
+    big.id = "big-number";
+    big.textContent = number;
+
+    let message = document.createElement("p");
+    message.textContent = text;
+
+    let button = document.createElement("a");
+    button.className = "button yellow";
+    button.href = address;
+    button.textContent = linkText;
+
+    card.appendChild(sticker);
+    card.appendChild(big);
+    card.appendChild(message);
+    card.appendChild(button);
+
+    // usuwamy wszystko, co było w <main>, i wstawiamy sam komunikat
+    let main = document.querySelector("main");
+    main.innerHTML = "";
+    main.appendChild(card);
+}
 
 // usuwa napis "ładuję..." z listy (jeśli jeszcze tam jest)
 function removeLoading(list){

@@ -166,7 +166,7 @@
 }
 
 /* strona 404 */
-/* używa: 404.php */
+/* używa: 404.php, a przez showPageError() z common.js: quiz.php, play.php, profile.php, editor.php */
 #not-found{
     display: grid;
     justify-items: center;
@@ -177,7 +177,7 @@
     text-align: center;
 }
 
-/* używa: 404.php */
+/* używa: 404.php, a przez showPageError() z common.js: quiz.php, play.php, profile.php, editor.php */
 #big-number{
     font-size: 100px;
     font-weight: 900;

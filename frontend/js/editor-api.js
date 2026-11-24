@@ -12,6 +12,8 @@ function loadCategories(){
 }
 
 // pobiera quiz o podanym id z API i przekazuje go do fillEditor(quiz)
+// gdy quizu nie ma: showPageError("404", "Nie ma takiego quizu.", "index.php", "strona główna"),
+// a gdy to cudzy quiz: showPageError("403", "To nie jest Twój quiz - edytować może tylko autor.", "index.php", "strona główna")
 function loadQuiz(){
 }
 
