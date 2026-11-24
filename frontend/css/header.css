@@ -59,9 +59,85 @@ header{
     grid-area: theme;
 }
 
+/* miejsce na "zaloguj się" albo menu konta */
+/* używa: wszystkie strony */
+#account{
+    grid-area: login;
+    position: relative;
+}
+
+/* przycisk na całą szerokość miejsca w nagłówku (ważne na telefonie) */
 /* używa: wszystkie strony */
 #login-button{
-    grid-area: login;
+    display: block;
+}
+
+/* menu konta, widoczne dopiero po zalogowaniu (pokazuje je JavaScript) */
+/* używa: wszystkie strony */
+#account-menu{
+    display: none;
+}
+
+/* przycisk z loginem, który otwiera menu */
+/* używa: wszystkie strony */
+#account-menu summary{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    text-transform: none;
+}
+
+/* używa: wszystkie strony */
+#account-menu summary::-webkit-details-marker{
+    display: none;
+}
+
+/* kwadrat z pierwszą literą loginu */
+/* używa: wszystkie strony */
+#account-avatar{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #171717;
+    border-radius: 7px;
+    background-color: #ffd23f;
+    color: #171717;
+    line-height: 22px;
+    text-align: center;
+}
+
+/* rozwijana lista pod przyciskiem */
+/* używa: wszystkie strony */
+#account-dropdown{
+    display: grid;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    z-index: 10;
+    min-width: 190px;
+    padding: 8px;
+}
+
+/* używa: wszystkie strony */
+#account-dropdown a, #account-dropdown button{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    color: inherit;
+    font-family: Archivo, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* używa: wszystkie strony */
+#account-dropdown a:hover, #account-dropdown button:hover{
+    background-color: #fbf2e2;
 }
 
 /* używa: wszystkie strony */

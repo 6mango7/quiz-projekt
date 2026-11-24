@@ -48,6 +48,22 @@
             ?>
         </nav>
         <button class="button" type="button" id="theme-button" onclick="toggleTheme()">motyw</button>
-        <a class="button yellow" id="login-button" href="login.php">zaloguj się</a>
+        <!-- konto: niezalogowany widzi "zaloguj się", zalogowany - menu z loginem (przełącza JavaScript) -->
+        <div id="account">
+            <a class="button yellow" id="login-button" href="login.php">zaloguj się</a>
+            <!-- details i summary to rozwijane menu wbudowane w HTML, otwiera się po kliknięciu -->
+            <details id="account-menu">
+                <summary class="button">
+                    <span id="account-avatar">?</span>
+                    <span id="account-login"></span>
+                </summary>
+                <div class="card" id="account-dropdown">
+                    <a href="profile.php">mój profil</a>
+                    <a href="editor.php">nowy quiz</a>
+                    <a href="settings.php">ustawienia</a>
+                    <button type="button" onclick="logOut()">wyloguj</button>
+                </div>
+            </details>
+        </div>
     </header>
     <main>

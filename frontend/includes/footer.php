@@ -6,3 +6,6 @@
             <a href="contact.php">kontakt</a>
         </nav>
     </footer>
+    <!-- menu konta w nagłówku (na każdej stronie): najpierw wygląd, potem komunikacja z bazą -->
+    <script src="js/account.js"></script>
+    <script src="js/account-api.js"></script>

@@ -40,6 +40,16 @@
     color: #22224a;
 }
 
+/* używa: wszystkie strony */
+.dark #account-dropdown a:hover, .dark #account-dropdown button:hover{
+    background-color: #16162f;
+}
+
+/* używa: wszystkie strony */
+.dark #account-avatar{
+    border-color: #171717;
+}
+
 /* używa: index.php, quizzes.php, editor.php, contact.php, login.php, profile.php, settings.php, quiz.php, play.php (wstawia JavaScript) */
 .dark .muted, .dark .card-category{
     color: #b7b2cc;
