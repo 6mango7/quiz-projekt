@@ -104,6 +104,7 @@
         </section>
 <?php include 'includes/footer.php'; ?>
     <!-- najpierw wygląd, potem komunikacja z bazą -->
+    <script src="js/common.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/quiz-api.js"></script>
 </body>

@@ -42,6 +42,7 @@
         </section>
 <?php include 'includes/footer.php'; ?>
     <!-- najpierw wygląd, potem komunikacja z bazą -->
+    <script src="js/common.js"></script>
     <script src="js/quizzes.js"></script>
     <script src="js/quizzes-api.js"></script>
 </body>

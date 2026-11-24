@@ -96,6 +96,7 @@ input, select, textarea, button{
     font-size: 13px;
     font-weight: bold;
     line-height: 20px;
+    white-space: nowrap;
     vertical-align: middle;
 }
 

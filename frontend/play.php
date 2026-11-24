@@ -63,6 +63,7 @@
         </section>
 <?php include 'includes/footer.php'; ?>
     <!-- najpierw wygląd i przebieg gry, potem komunikacja z bazą -->
+    <script src="js/common.js"></script>
     <script src="js/play.js"></script>
     <script src="js/play-api.js"></script>
 </body>

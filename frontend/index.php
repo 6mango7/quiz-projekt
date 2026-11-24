@@ -36,8 +36,9 @@
                 <span class="badge">najwięcej gier</span>
                 <a class="button" href="quizzes.php?sort=popular">wszystkie</a>
             </div>
-            <ul class="quiz-list">
-                <li class="empty">Tu pojawią się najpopularniejsze quizy.</li>
+            <!-- karty quizów wstawia JavaScript -->
+            <ul class="quiz-list" id="popular-list">
+                <li class="loading">ładuję quizy...</li>
             </ul>
         </section>
         <section>
@@ -46,10 +47,15 @@
                 <span class="badge">ostatnio dodane</span>
                 <a class="button" href="quizzes.php?sort=new">wszystkie</a>
             </div>
-            <ul class="quiz-list">
-                <li class="empty">Tu pojawią się najnowsze quizy.</li>
+            <!-- karty quizów wstawia JavaScript -->
+            <ul class="quiz-list" id="new-list">
+                <li class="loading">ładuję quizy...</li>
             </ul>
         </section>
 <?php include 'includes/footer.php'; ?>
+    <!-- najpierw wygląd, potem komunikacja z bazą -->
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/home-api.js"></script>
 </body>
 </html>

@@ -51,6 +51,7 @@
         </section>
 <?php include 'includes/footer.php'; ?>
     <!-- najpierw wygląd, potem komunikacja z bazą -->
+    <script src="js/common.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/profile-api.js"></script>
 </body>
