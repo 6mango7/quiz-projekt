@@ -20,7 +20,8 @@
 .dark .card, .dark .button, .dark .field, .dark .badge, .dark .sticker, .dark .hero-tile, .dark #or-sign,
 .dark .empty, .dark .card-top, .dark .mini-or, .dark .letters, .dark .missing, .dark .option-row,
 .dark #errors, .dark #login-errors, .dark #register-errors,
-.dark #profile-errors, .dark #password-errors, .dark #delete-errors, .dark #rating-errors, .dark #delete-zone, .dark #menu a:hover, .dark #emoji-list button:hover{
+.dark #profile-errors, .dark #password-errors, .dark #delete-errors, .dark #rating-errors, .dark #delete-zone, .dark #menu a:hover, .dark #emoji-list button:hover,
+.dark #profile-saved, .dark #password-saved{
     border-color: #f4efe3;
 }
 

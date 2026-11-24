@@ -31,6 +31,8 @@
                     <div>
                         <button class="button yellow" type="button" onclick="saveProfile()">zapisz</button>
                     </div>
+                    <!-- zielony napis po udanym zapisie, pokazuje go JavaScript -->
+                    <p id="profile-saved"></p>
                 </form>
             </section>
             <section class="card">
@@ -53,6 +55,8 @@
                     <div>
                         <button class="button yellow" type="button" onclick="changePassword()">zmień hasło</button>
                     </div>
+                    <!-- zielony napis po udanej zmianie hasła, pokazuje go JavaScript -->
+                    <p id="password-saved"></p>
                 </form>
             </section>
             <section class="card">

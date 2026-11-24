@@ -8,14 +8,14 @@ function loadSettings(){
 }
 
 // wysyła nowy e-mail i opis do API,
-// błędy przekazuje do showErrors('profile-errors', errors), a po zapisie wywołuje showSaved(text)
+// błędy przekazuje do showErrors('profile-errors', errors), a po zapisie wywołuje showSaved('profile-saved', text)
 // wywołuje ją przycisk "zapisz"
 function saveProfile(){
 }
 
 // wysyła obecne hasło, nowe hasło i powtórzenie do API,
 // błędy przekazuje do showErrors('password-errors', errors),
-// po zmianie wywołuje clearPasswordForm() i showSaved(text)
+// po zmianie wywołuje clearPasswordForm() i showSaved('password-saved', text)
 // wywołuje ją przycisk "zmień hasło"
 function changePassword(){
 }

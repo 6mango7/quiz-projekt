@@ -23,6 +23,9 @@ function showErrors(boxId, errors){
         return;
     }
 
+    // przy błędzie chowamy stary zielony napis "Zapisano", żeby nie było obu naraz
+    hideSaved();
+
     let list = document.createElement("ul");
     for(let i = 0; i < errors.length; i++){
         let item = document.createElement("li");
@@ -33,12 +36,24 @@ function showErrors(boxId, errors){
     box.style.display = "block";
 }
 
-// pokazuje komunikat po udanym zapisie, np. "Zapisano."
+// pokazuje zielony napis po udanym zapisie w polu o podanym id
+// ('profile-saved' pod przyciskiem "zapisz" albo 'password-saved' pod "zmień hasło")
 // przy okazji chowa stare błędy, bo zapis się udał
-function showSaved(text){
+// przykład: showSaved("profile-saved", "Zapisano.");
+function showSaved(boxId, text){
     showErrors("profile-errors", []);
     showErrors("password-errors", []);
-    alert(text);
+    hideSaved();
+
+    let box = document.getElementById(boxId);
+    box.textContent = "✓ " + text;
+    box.style.display = "block";
+}
+
+// chowa oba zielone napisy
+function hideSaved(){
+    document.getElementById("profile-saved").style.display = "none";
+    document.getElementById("password-saved").style.display = "none";
 }
 
 // czyści trzy pola z hasłami po udanej zmianie hasła

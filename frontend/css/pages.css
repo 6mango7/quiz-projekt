@@ -306,3 +306,15 @@
 #theme-choice .button{
     margin: 0 10px 10px 0;
 }
+
+/* zielony napis "Zapisano" (pokazuje go JavaScript), wygląda jak pole błędów, tylko na zielono */
+/* używa: settings.php */
+#profile-saved, #password-saved{
+    display: none;
+    padding: 10px 16px;
+    border: 3px solid #171717;
+    border-radius: 12px;
+    background-color: #3ac57e;
+    color: #171717;
+    font-weight: bold;
+}
