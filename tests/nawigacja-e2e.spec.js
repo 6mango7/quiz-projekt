@@ -6,7 +6,7 @@ test('motyw przełączony klawiaturą pozostaje aktywny po nawigacji i odśwież
     const naglowek = page.getByRole('banner');
     const przelacznik = naglowek.getByRole('button', { name: 'motyw', exact: true });
     const jasneTlo = 'rgb(251, 242, 226)';
-    const ciemneTlo = 'rgb(22, 22, 47)';
+    const ciemneTlo = 'rgb(20, 20, 20)';
 
     await expect(tloStrony).toHaveCSS('background-color', jasneTlo);
     await przelacznik.press('Space');
