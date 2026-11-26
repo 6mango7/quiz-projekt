@@ -10,10 +10,17 @@ class Quiz
         $this->db = $db;
     }
 
-    //lista quizow do kart
     //lista quizow do kart, categoryId 0 = wszystkie kategorie
-    public function findAll(int $categoryId, string $search): array
+    //sort: popular, new albo best
+    public function findAll(int $categoryId, string $search, string $sort): array
     {
+        //sortowanie - wybieramy jeden z naszych gotowych kawalkow sql
+        $orderSql = match ($sort) {
+            'new'   => 'q.data_dodania DESC, q.id DESC',
+            'best'  => 'average DESC, q.rozegrania DESC, q.id DESC',
+            default => 'q.rozegrania DESC, q.id DESC',
+        };
+
         //warunki i wartosci dokladamy tylko dla wybranych filtrow
         $where = [];
         $params = [];
@@ -36,12 +43,13 @@ class Quiz
         $rows = $this->db->fetchAll(
             'SELECT q.id, q.tytul AS title, q.rozegrania AS plays,
                     k.id AS category_id, k.nazwa AS category_name,
-                    u.login AS author
+                    u.login AS author,
+                    (SELECT AVG(ocena) FROM oceny WHERE quiz_id = q.id) AS average
              FROM quizy q
              JOIN kategorie k ON k.id = q.kategoria_id
              JOIN uzytkownicy u ON u.id = q.autor_id '
             . $whereSql
-            . ' ORDER BY q.id',
+            . ' ORDER BY ' . $orderSql,
             $params
         );
 
@@ -65,6 +73,7 @@ class Quiz
             ],
             'author'   => $row['author'],
             'plays'    => $row['plays'],
+            'average'  => $row['average'] === null ? null : round((float) $row['average'], 1),
         ];
     }
 }
