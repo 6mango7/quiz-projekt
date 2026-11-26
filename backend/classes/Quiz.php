@@ -27,7 +27,8 @@ class Quiz
             'SELECT q.id, q.tytul AS title, q.rozegrania AS plays,
                     k.id AS category_id, k.nazwa AS category_name,
                     u.login AS author,
-                    (SELECT AVG(ocena) FROM oceny WHERE quiz_id = q.id) AS average
+                    (SELECT AVG(ocena) FROM oceny WHERE quiz_id = q.id) AS average,
+                    (SELECT COUNT(*) FROM opcje WHERE quiz_id = q.id) AS option_count
              FROM quizy q
              JOIN kategorie k ON k.id = q.kategoria_id
              JOIN uzytkownicy u ON u.id = q.autor_id '
@@ -37,9 +38,12 @@ class Quiz
             $params
         );
 
+        //okladki dla calej porcji naraz
+        $covers = $this->findCovers(array_column($rows, 'id'));
+
         $quizzes = [];
         foreach ($rows as $row) {
-            $quizzes[] = $this->toCard($row);
+            $quizzes[] = $this->toCard($row, $covers[$row['id']] ?? []);
         }
 
         return $quizzes;
@@ -79,19 +83,53 @@ class Quiz
         return [$whereSql, $params];
     }
 
+    //dwie pierwsze opcje kazdego quizu - na okladke karty
+    //jedno zapytanie dla calej porcji zamiast osobnego dla kazdego quizu
+    private function findCovers(array $quizIds): array
+    {
+        if (count($quizIds) === 0) {
+            return [];
+        }
+
+        //tyle znakow zapytania ile quizow, np. "?, ?, ?"
+        $placeholders = implode(', ', array_fill(0, count($quizIds), '?'));
+
+        $rows = $this->db->fetchAll(
+            'SELECT quiz_id, nazwa AS name, obrazek AS image
+             FROM opcje
+             WHERE quiz_id IN (' . $placeholders . ')
+             ORDER BY quiz_id, id',
+            $quizIds
+        );
+
+        //grupujemy po quizie i zostawiamy po dwie pierwsze opcje
+        $covers = [];
+        foreach ($rows as $row) {
+            $quizId = $row['quiz_id'];
+
+            if (count($covers[$quizId] ?? []) < 2) {
+                $covers[$quizId][] = ['name' => $row['name'], 'image' => $row['image']];
+            }
+        }
+
+        return $covers;
+    }
+
     //zamienia plaski wiersz z bazy na ksztalt ktorego oczekuje front
-    private function toCard(array $row): array
+    private function toCard(array $row, array $cover): array
     {
         return [
-            'id'       => $row['id'],
-            'title'    => $row['title'],
-            'category' => [
+            'id'          => $row['id'],
+            'title'       => $row['title'],
+            'category'    => [
                 'id'   => $row['category_id'],
                 'name' => $row['category_name'],
             ],
-            'author'   => $row['author'],
-            'plays'    => $row['plays'],
-            'average'  => $row['average'] === null ? null : round((float) $row['average'], 1),
+            'author'      => $row['author'],
+            'plays'       => $row['plays'],
+            'average'     => $row['average'] === null ? null : round((float) $row['average'], 1),
+            'optionCount' => $row['option_count'],
+            'cover'       => $cover,
         ];
     }
 }
