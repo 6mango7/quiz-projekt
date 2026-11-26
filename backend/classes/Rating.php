@@ -51,4 +51,15 @@ class Rating
             [$quizId, $userId]
         );
     }
+
+    //dodaje ocene albo zmienia ja, jesli ta osoba juz oceniala ten quiz
+    public function save(int $quizId, int $userId, int $rating, ?string $comment): void
+    {
+        $this->db->execute(
+            'INSERT INTO oceny (quiz_id, uzytkownik_id, ocena, komentarz)
+             VALUES (?, ?, ?, ?)
+             ON DUPLICATE KEY UPDATE ocena = ?, komentarz = ?, data_dodania = NOW()',
+            [$quizId, $userId, $rating, $comment, $rating, $comment]
+        );
+    }
 }
