@@ -62,4 +62,15 @@ class Rating
             [$quizId, $userId, $rating, $comment, $rating, $comment]
         );
     }
+
+    //usuwa ocene tej osoby, zwraca czy cos usunieto
+    public function delete(int $quizId, int $userId): bool
+    {
+        $deleted = $this->db->execute(
+            'DELETE FROM oceny WHERE quiz_id = ? AND uzytkownik_id = ?',
+            [$quizId, $userId]
+        );
+
+        return $deleted > 0;
+    }
 }
