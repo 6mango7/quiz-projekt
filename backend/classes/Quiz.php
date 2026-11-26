@@ -59,6 +59,42 @@ class Quiz
         return $row['total'];
     }
 
+    //jeden quiz po id albo null - do strony quizu
+    public function findById(int $id): ?array
+    {
+        $row = $this->db->fetchOne(
+            'SELECT q.id, q.tytul AS title, q.opis AS description, q.rozegrania AS plays,
+                    q.data_dodania AS created_at, q.autor_id AS author_id,
+                    k.id AS category_id, k.nazwa AS category_name,
+                    u.login AS author,
+                    (SELECT AVG(ocena) FROM oceny WHERE quiz_id = q.id) AS average
+             FROM quizy q
+             JOIN kategorie k ON k.id = q.kategoria_id
+             JOIN uzytkownicy u ON u.id = q.autor_id
+             WHERE q.id = ?',
+            [$id]
+        );
+
+        if ($row === null) {
+            return null;
+        }
+
+        return [
+            'id'          => $row['id'],
+            'title'       => $row['title'],
+            'description' => $row['description'],
+            'category'    => [
+                'id'   => $row['category_id'],
+                'name' => $row['category_name'],
+            ],
+            'author'      => $row['author'],
+            'authorId'    => $row['author_id'],
+            'createdAt'   => $row['created_at'],
+            'plays'       => $row['plays'],
+            'average'     => $this->formatAverage($row['average']),
+        ];
+    }
+
     //warunki WHERE dla filtrow - wspolne dla listy i liczenia
     private function buildWhere(int $categoryId, string $search): array
     {
@@ -127,9 +163,19 @@ class Quiz
             ],
             'author'      => $row['author'],
             'plays'       => $row['plays'],
-            'average'     => $row['average'] === null ? null : round((float) $row['average'], 1),
+            'average'     => $this->formatAverage($row['average']),
             'optionCount' => $row['option_count'],
             'cover'       => $cover,
         ];
+    }
+
+    //srednia z bazy (tekst albo null) na liczbe z jednym miejscem po przecinku
+    private function formatAverage(?string $average): ?float
+    {
+        if ($average === null) {
+            return null;
+        }
+
+        return round((float) $average, 1);
     }
 }
