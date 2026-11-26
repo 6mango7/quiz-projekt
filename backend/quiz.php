@@ -31,10 +31,6 @@ jsonResponse([
         'plays'   => $quiz['plays'],
         'average' => $quiz['average'],
     ],
-        'stats' => [
-        'plays'   => $quiz['plays'],
-        'average' => $quiz['average'],
-    ],
     'sizes'   => QuizOption::tournamentSizes(count($ranking)),
     'options' => $ranking,
 ]);
