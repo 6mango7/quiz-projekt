@@ -13,6 +13,10 @@ if ($quiz === null) {
     jsonError('Nie ma takiego quizu', 404);
 }
 
+//ranking opcji i rozmiary turnieju
+$quizOptions = new QuizOption($db);
+$ranking = $quizOptions->findRanking($quiz['id']);
+
 jsonResponse([
     'quiz' => [
         'id'          => $quiz['id'],
@@ -27,4 +31,10 @@ jsonResponse([
         'plays'   => $quiz['plays'],
         'average' => $quiz['average'],
     ],
+        'stats' => [
+        'plays'   => $quiz['plays'],
+        'average' => $quiz['average'],
+    ],
+    'sizes'   => QuizOption::tournamentSizes(count($ranking)),
+    'options' => $ranking,
 ]);
